@@ -1,6 +1,6 @@
 language: nodeCreate public and private SSH keysjs
 nodejs:
-- 6.9.1
+  - "9"
 notifications:
   email:
     onfailure: change
