@@ -33,4 +33,4 @@ after_success:
   - "./scripts/deploy.sh"
 before_install:
   - openssl aes-256-cbc -K $encrypted_6997cb16d997_key -iv $encrypted_6997cb16d997_iv
-  -in deploy.enc -out deploy -d
+    -in deploy.enc -out deploy -d
