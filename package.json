@@ -3,7 +3,7 @@
   "version": "0.8.14",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"npm run js-watch\" \"npm run bsb-watch\"",
+    "start": "concurrently \"yarn run js-watch\" \"yarn run bsb-watch\"",
     "js-watch": "razzle start",
     "bsb-watch": "bsb -make-world -w",
     "clean": "bsb -clean-world && rm -rf build",

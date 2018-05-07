@@ -2,7 +2,7 @@
 set -x
 
 export NODE_ENV=production
-export NVM_BIN=$HOME/.nvm/versions/node/v6.9.0/bin
+export NVM_BIN=$HOME/.nvm/versions/node/v9.10.0/bin
 
 cd $REMOTEAPPDIR && \
 tar zxvf package.tgz -C . && \
