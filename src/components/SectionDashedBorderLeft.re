@@ -1,11 +1,11 @@
 let text = ReasonReact.stringToElement;
 
-let component = ReasonReact.statelessComponent("SectionDashedBorderRight");
+let component = ReasonReact.statelessComponent("SectionDashedBorderLeft");
 
 let dashedLineStyle =
   ReactDOMRe.Style.make(
     ~display="inline-block",
-    ~borderRight="dashed 10px blue",
+    ~borderLeft="dashed 10px blue",
     ~height="100%",
     ~width="100%",
     ~borderWidth="5px",
