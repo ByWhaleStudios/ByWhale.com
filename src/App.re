@@ -22,7 +22,10 @@ let byWhaleTextStyle =
 let make = (~title, ~initialUrl, _children) => {
   ...component,
   render: _self =>
-    <Grid className="App">
+    <div>
+      (text("Coming soon"))
+    </div>
+    /*<Grid className="App">
       <Row>
         <Col xs=8/>
         <Col xs=4>
@@ -83,8 +86,7 @@ let make = (~title, ~initialUrl, _children) => {
         </Col>
         <Col xs=1/>
       </Row>
-
-    </Grid>
+    </Grid>*/
 };
 
 let default =
