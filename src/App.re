@@ -10,9 +10,11 @@ let imageStyle =
     ()
   );
 
-let dashedLineStyle =
+let byWhaleTextStyle =
   ReactDOMRe.Style.make(
-    ~height="20",
+    ~color="blue",
+    ~fontSize="40px",
+    ~fontWeight="700",
     ()
   );
 
@@ -24,21 +26,15 @@ let make = (~title, ~initialUrl, _children) => {
       <Row>
         <Col xs=8/>
         <Col xs=4>
-          (text("bywhale."))
+          <div style=byWhaleTextStyle>
+            (text("bywhale."))
+          </div>
         </Col>
       </Row>
-      <Row>
-        <Col xs=1/>
-        <Col xs=10>
-          (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
-        </Col>
-        <Col xs=1/>
-      </Row>
-      <Row>
-        <Col xs=12>
-          <div style=dashedLineStyle />
-        </Col>
-      </Row>
+      <SectionDashed
+        title="1. News"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      />
       <Row>
         <Col xs=1/>
         <Col xs=3>
@@ -53,11 +49,6 @@ let make = (~title, ~initialUrl, _children) => {
         <Col xs=1/>
       </Row>
       <Row>
-        <Col xs=12>
-          <div style=dashedLineStyle />
-        </Col>
-      </Row>
-      <Row>
         <Col xs=1/>
         <Col xs=4>
           (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
@@ -67,11 +58,7 @@ let make = (~title, ~initialUrl, _children) => {
         </Col>
         <Col xs=1/>
       </Row>
-      <Row>
-        <Col xs=12>
-          <div style=dashedLineStyle />
-        </Col>
-      </Row>
+      <SectionDashedBorderTop title="words"/>
       <Row>
         <Col xs=1/>
         <Col xs=6>
@@ -82,11 +69,7 @@ let make = (~title, ~initialUrl, _children) => {
         </Col>
         <Col xs=1/>
       </Row>
-      <Row>
-        <Col xs=12>
-          <div style=dashedLineStyle />
-        </Col>
-      </Row>
+      <SectionDashedBorderTop title="words"/>
       <Row>
         <Col xs=1/>
         <Col xs=3>
