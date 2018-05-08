@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import App from '../lib/es6_global/src/App'; // BuckleScript output directory
 
 render(
-  <App title="bywhale." foundPath={window.location.pathname}/>,
+  <App title="bywhale." foundHash={window.location.hash}/>,
   document.getElementById('root')
 );
 

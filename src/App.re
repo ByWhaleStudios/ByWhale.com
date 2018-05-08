@@ -4,11 +4,11 @@ let text = ReasonReact.stringToElement;
 let component = ReasonReact.statelessComponent("App");
 
 /* underscore before names indicate unused variables. We name them for clarity */
-let make = (~title, ~initialUrl, ~foundPath, _children) => {
+let make = (~title, ~initialUrl, ~foundHash, _children) => {
   ...component,
   render: _self =>
-    switch(foundPath){
-    | Some("/beta") => <Main />
+    switch(foundHash){
+    | Some("#beta") => <Main />
     | _ =>
         <div>
           (text("were cooking our website. we’ll be up and running shortly"))
@@ -21,7 +21,7 @@ let default =
     make(
       ~title=jsProps##title,
       ~initialUrl=Js.undefinedToOption(jsProps##initialUrl),
-      ~foundPath=Js.undefinedToOption(jsProps##foundPath),
+      ~foundHash=Js.undefinedToOption(jsProps##foundHash),
       [||]
     )
   );
