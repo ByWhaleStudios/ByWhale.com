@@ -8,6 +8,7 @@
     "bsb-watch": "bsb -make-world -w",
     "clean": "bsb -clean-world && rm -rf build",
     "build": "bsb -make-world && razzle build",
+    "travis": "bsb -make-world && razzle build && cp ./build/public/static/js/bundle.*.js ./build/public/static/js/bundle.js && cp ./build/public/static/css/bundle.*.css ./build/public/static/css/bundle.css && cp ./template/index.html ./build/",
     "test": "razzle test --env=jsdom",
     "start:prod": "NODE_ENV=production node build/server.js"
   },
