@@ -1,4 +1,3 @@
-[%bs.raw {|require('bootstrap/dist/css/bootstrap.css')|}];
 let text = ReasonReact.stringToElement;
 
 let component = ReasonReact.statelessComponent("SectionDashedBorderTop");
@@ -29,26 +28,33 @@ let otherBox =
     ()
   );
 
-let wordStyle =
+let titleStyle =
   ReactDOMRe.Style.make(
     ~color="blue",
     ~fontSize="40px",
     ~fontWeight="500",
+    ~whiteSpace="nowrap",
     ()
   );
 
-let make = (~title, _children) => {
+let make = (~title : option(string), _children) => {
   ...component,
   render: _self =>
     <Row>
       <Col xs=1 />
       <Col xs=10>
         <div style=flex>
-          <div style=wordStyle>
-            <p>
-              (text(title))
-            </p>
-          </div>
+          (
+            switch(title) {
+            | None => <div/>
+            | Some(titleString : string) =>
+                <div style=titleStyle>
+                  <p>
+                    (text(titleString))
+                  </p>
+                </div>
+            }
+          )
           <div style=otherBox>
             <div style=dashedLineStyle />
           </div>
