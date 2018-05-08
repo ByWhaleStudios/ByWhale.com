@@ -23,7 +23,7 @@ env:
   - PORT=8080
 install:
 - yarn install
-beforescript:
+before_script:
 - chmod 600 deploy && mv deploy ~/.ssh/idrsa
 script:
 - yarn build
