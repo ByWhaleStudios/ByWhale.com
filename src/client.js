@@ -6,7 +6,7 @@ import { render } from 'react-dom';
 import App from '../lib/es6_global/src/App'; // BuckleScript output directory
 
 render(
-  <App title="Welcome to Razzle Reason React" />,
+  <App title="bywhale." foundPath={window.location.pathname}/>,
   document.getElementById('root')
 );
 
