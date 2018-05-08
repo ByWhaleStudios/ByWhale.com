@@ -26,7 +26,7 @@ install:
 before_script:
 - chmod 600 deploy && mv deploy ~/.ssh/idrsa
 script:
-- yarn build
+- yarn travis
 after_success:
 - "chmod +x ./scripts/deploy.sh && ./scripts/deploy.sh"
 before_install:
