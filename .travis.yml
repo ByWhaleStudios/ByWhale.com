@@ -16,7 +16,6 @@ branches:
   only:
   - master
 env:
-  global:
   - REMOTEAPPDIR=/srv/www/bywhale.me/
   - REMOTEUSER=deploy
   - REMOTEHOST=167.99.0.204
