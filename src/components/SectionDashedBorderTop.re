@@ -31,36 +31,59 @@ let otherBox =
 let titleStyle =
   ReactDOMRe.Style.make(
     ~color="blue",
-    ~fontSize="40px",
-    ~fontWeight="500",
     ~whiteSpace="nowrap",
     ()
   );
 
-let make = (~title : option(string), _children) => {
+let paragraphStyle =
+  ReactDOMRe.Style.make(
+    ~marginBottom="0",
+    ~paddingBottom="0",
+    ()
+  );
+
+let sectionDashedBorderTopStyle =
+  ReactDOMRe.Style.make(
+    ~marginBottom="20px",
+    ()
+  );
+
+
+let make = (~title : option(string), ~orientation : option(Orientation.t), _children) => {
   ...component,
   render: _self =>
-    <Row>
-      <Col xs=1 />
-      <Col xs=10>
-        <div style=flex>
-          (
-            switch(title) {
-            | None => <div/>
-            | Some(titleString : string) =>
-                <div style=titleStyle>
-                  <p>
-                    (text(titleString))
-                  </p>
+    <div style=sectionDashedBorderTopStyle>
+      (
+        switch(orientation, title) {
+          | (Some(Orientation.Right), Some(titleString)) =>
+              <div style=flex>
+                <div style=otherBox>
+                  <div style=dashedLineStyle />
                 </div>
-            }
-          )
-          <div style=otherBox>
-            <div style=dashedLineStyle />
-          </div>
-        </div>
-      </Col>
-      <Col xs=1 />
-    </Row>
+                <div style=titleStyle>
+                  <h1 style=paragraphStyle>
+                    (text(titleString))
+                  </h1>
+                </div>
+              </div>
+          
+          | (_, Some(titleString)) =>
+              <div style=flex>
+                <div style=titleStyle>
+                  <h1 style=paragraphStyle>
+                    (text(titleString))
+                  </h1>
+                </div>
+                <div style=otherBox>
+                  <div style=dashedLineStyle />
+                </div>
+              </div>
+          | _ =>
+            <div style=otherBox>
+              <div style=dashedLineStyle />
+            </div>
+          }
+      )
+    </div>
 };
 
