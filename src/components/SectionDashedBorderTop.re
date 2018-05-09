@@ -36,12 +36,16 @@ let titleStyle =
     ~whiteSpace="nowrap",
     ()
   );
+  
 
-let paragraphStyle =
-  ReactDOMRe.Style.make(
-    ~marginBottom="0",
-    ~paddingBottom="0",
-    ()
+let paragraphStyle = (titleTextStyle) =>
+  Belt.Option.getWithDefault(
+    titleTextStyle,
+    ReactDOMRe.Style.make(
+      ~marginBottom="0",
+      ~paddingBottom="0",
+      ()
+    )
   );
 
 let middleStyle =
@@ -66,6 +70,7 @@ let make = (
   ~orientation=Orientation.Left,
   ~top=false,
   ~borders=false,
+  ~titleTextStyle=?,
   _children
 ) => {
   ...component,
@@ -77,7 +82,7 @@ let make = (
           | Some(titleString) =>
               [
                 <div style=titleStyle>
-                  <h1 className="h1" style=paragraphStyle>
+                  <h1 className="h1" style=paragraphStyle(titleTextStyle)>
                     (text(titleString))
                   </h1>
                 </div>,

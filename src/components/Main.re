@@ -25,10 +25,10 @@ let titleStyle =
     ()
   );
 
-let byWhaleTextStyle =
+let byWhaleTitleStyle =
   ReactDOMRe.Style.make(
     ~color="blue",
-    ~fontSize="40px",
+    ~fontSize="70px",
     ~fontWeight="700",
     ()
   );
@@ -114,7 +114,7 @@ let make = (_children) => {
   ...component,
   render: _self =>
     <div style=appStyle>
-      <SectionDashedBorderTop title=Some("bywhale.") orientation=Orientation.Right borders=true top=true />
+      <SectionDashedBorderTop title=Some("bywhale.") orientation=Orientation.Right borders=true top=true titleTextStyle=byWhaleTitleStyle/>
       <Grid style=gridStyle>
         
         <Row>
