@@ -40,6 +40,24 @@ let gridStyle =
     ()
   );
 
+let items : list(BlueWhaleCarosel.caroselItem) = [
+  {
+    src: "https://www.placecage.com/400/400",
+    altText: "Slide 1",
+    caption: "Slide 1"
+  },
+  {
+    src: "https://www.placecage.com/400/400",
+    altText: "Slide 2",
+    caption: "Slide 2"
+  },
+  {
+    src: "https://www.placecage.com/400/400",
+    altText: "Slide 3",
+    caption: "Slide 3"
+  }
+];
+
 /* underscore before names indicate unused variables. We name them for clarity */
 let make = (_children) => {
   ...component,
@@ -99,7 +117,7 @@ let make = (_children) => {
                   </div>
                 </Col>
                 <Col xs=7>
-                  <img src="https://www.placecage.com/300/400" style=imageStyle />
+                  <BlueWhaleCarosel items=items/>
                 </Col>
               </Row>
             </Grid>
@@ -110,7 +128,7 @@ let make = (_children) => {
             <Grid>
               <Row>
                 <Col xs=7>
-                  <img src="https://www.placecage.com/300/400" style=imageStyle />
+                  <BlueWhaleCarosel items=items/>
                 </Col>
                 <Col xs=5>
                   <div>
