@@ -10,6 +10,8 @@ let dashedLineStyle =
     ~width="100%",
     ~borderWidth="5px",
     ~overflow="auto",
+    ~padding="0",
+    ~margin="0",
     ()
   );
 
@@ -20,9 +22,9 @@ let flex =
     ()
   );
 
-let otherBox =
+let otherBox = (top) =>
   ReactDOMRe.Style.make(
-    ~alignSelf="flex-end",
+    ~alignSelf=top ? "flex-start" : "flex-end",
     ~width="100%",
     ~height="100%",
     ()
@@ -42,48 +44,58 @@ let paragraphStyle =
     ()
   );
 
-let sectionDashedBorderTopStyle =
+let middleStyle =
   ReactDOMRe.Style.make(
-    ~marginBottom="20px",
+    ~width="20px",
     ()
   );
 
-
-let make = (~title : option(string), ~orientation : option(Orientation.t), _children) => {
+let borderStyle = (borders) =>
+  switch(borders){
+  | true =>
+    ReactDOMRe.Style.make(
+      ~borderLeft="dashed 10px blue",
+      ~borderWidth="5px",
+      ()
+    )
+  | false =>
+      ReactDOMRe.Style.make(())
+  };
+let make = (
+  ~title : option(string),
+  ~orientation=Orientation.Left,
+  ~top=false,
+  ~borders=false,
+  _children
+) => {
   ...component,
   render: _self =>
-    <div style=sectionDashedBorderTopStyle>
-      (
-        switch(orientation, title) {
-          | (Some(Orientation.Right), Some(titleString)) =>
-              <div style=flex>
-                <div style=otherBox>
-                  <div style=dashedLineStyle />
-                </div>
+    <div style=borderStyle(borders)>
+      <div style=flex>
+        (
+          switch(title) {
+          | Some(titleString) =>
+              [
                 <div style=titleStyle>
-                  <h1 style=paragraphStyle>
+                  <h1 className="h1" style=paragraphStyle>
                     (text(titleString))
                   </h1>
-                </div>
-              </div>
-          
-          | (_, Some(titleString)) =>
-              <div style=flex>
-                <div style=titleStyle>
-                  <h1 style=paragraphStyle>
-                    (text(titleString))
-                  </h1>
-                </div>
-                <div style=otherBox>
+                </div>,
+                <div style=middleStyle />,
+                <div style=otherBox(top)>
                   <div style=dashedLineStyle />
-                </div>
+                </div>,
+              ]
+              |> (orientation === Orientation.Right ? Belt.List.reverse : (a) => a)
+              |> Belt.List.toArray
+              |> ReasonReact.arrayToElement
+          | None =>
+              <div style=otherBox(top)>
+                <div style=dashedLineStyle />
               </div>
-          | _ =>
-            <div style=otherBox>
-              <div style=dashedLineStyle />
-            </div>
           }
-      )
+        )
+      </div>
     </div>
 };
 
