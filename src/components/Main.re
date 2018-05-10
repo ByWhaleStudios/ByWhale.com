@@ -13,8 +13,6 @@ let contentStyle =
 let titleStyle =
   ReactDOMRe.Style.make(
     ~color="blue",
-    ~fontSize="50px",
-    ~fontWeight="500",
     ~whiteSpace="nowrap",
     ()
   );
@@ -222,17 +220,17 @@ let make = (_children) => {
             <Grid>
               <Row>
                 <Col md=4>
-                  <h1 style=titleStyle className="h1">
+                  <h2 style=titleStyle className="h2">
                     (text("5. About"))
-                  </h1>
+                  </h2>
                   <p style=contentStyle>
                     (text("by whale.  is a design, coding, and product development studio based in New York City."))
                   </p>
                 </Col>
                 <Col md=4>
-                  <h1 style=titleStyle className="h1">
+                  <h2 style=titleStyle className="h2">
                     (text("6. Address"))
-                  </h1>
+                  </h2>
                   <p style=contentStyle>
                     (text("68 Jay Street"))
                     <br/>
@@ -242,9 +240,9 @@ let make = (_children) => {
                   </p>
                 </Col>
                 <Col md=4>
-                  <h1 style=titleStyle className="h1">
+                  <h2 style=titleStyle className="h2">
                     (text("7. Follow"))
-                  </h1>
+                  </h2>
                   <p style=contentStyle>
                     (text("Medium"))
                     <br/>

@@ -13,6 +13,11 @@ h1.h1 {
   font-weight: 400;
 }
 
+h2.h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
 .App {
   text-align: center;
 }
