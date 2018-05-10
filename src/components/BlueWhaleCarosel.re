@@ -25,7 +25,7 @@ let slides = (items, send) =>
     Js.log("idx = %j");
     Js.log(idx);
     <CarouselItem
-      key=(idx |> string_of_int)
+      keyVal=(idx |> string_of_int)
       onExiting=(() => send(OnExiting))
       onExited=(() => send(OnExited))
     >
