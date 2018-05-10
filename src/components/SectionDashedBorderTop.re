@@ -26,7 +26,7 @@ let otherBox = (top) =>
   ReactDOMRe.Style.make(
     ~alignSelf=top ? "flex-start" : "flex-end",
     ~width="100%",
-    ~marginTop=(top ?"-13px" : "7px"),
+    ~marginTop=(top ?"-21px" : "7px"),
     ()
   );
 

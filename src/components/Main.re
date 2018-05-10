@@ -8,7 +8,6 @@ let component = ReasonReact.statelessComponent("Main");
 
 let contentStyle =
   ReactDOMRe.Style.make(
-    ~fontSize="24px",
     ~textJustify="none",
     ()
   );
@@ -22,7 +21,7 @@ let titleStyle =
 
 let byWhaleTitleStyle =
   ReactDOMRe.Style.make(
-    ~fontSize="70px",
+    ~fontSize="3em",
     ~fontWeight="700",
     ~fontFamily="Avenir Heavy",
     ()
