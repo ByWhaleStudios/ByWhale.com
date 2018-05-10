@@ -42,8 +42,6 @@ let gridStyle =
     ~width="100%",
     ~height="100%",
     ~maxWidth="100%",
-    ~borderBottom="dashed 10px blue",
-    ~borderLeft="dashed 10px blue",
     ~borderRight="dashed 10px blue",
     ()
   );
@@ -100,6 +98,8 @@ let appStyle =
     ~marginTop="0",
     ~marginBottom="0",
     ~borderWidth="5px",
+    ~borderLeft="dashed 10px blue",
+    ~borderBottom="dashed 10px blue",
     ()
   );
 
@@ -115,7 +115,7 @@ let make = (_children) => {
   ...component,
   render: _self =>
     <div style=appStyle>
-      <SectionDashedBorderTop title=Some("bywhale.") orientation=Orientation.Right borders=true top=true titleTextStyle=byWhaleTitleStyle/>
+      <SectionDashedBorderTop title=Some("bywhale.") orientation=Orientation.Right top=true titleTextStyle=byWhaleTitleStyle/>
         <div style=gridStyle>
           <SectionDashed
             orientation=Orientation.Left
