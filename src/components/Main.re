@@ -2,13 +2,6 @@ let text = ReasonReact.stringToElement;
 
 let component = ReasonReact.statelessComponent("Main");
 
-let imageStyle =
-  ReactDOMRe.Style.make(
-    ~maxHeight="100%",
-    ~maxWidth="100%",
-    ()
-  );
-
 let contentStyle =
   ReactDOMRe.Style.make(
     ~fontSize="24px",
@@ -111,6 +104,13 @@ let flex =
     ()
   );
 
+let fullWidthImageStyle =
+  ReactDOMRe.Style.make(
+    ~height="auto",
+    ~width="100%",
+    ()
+  );
+
 /* underscore before names indicate unused variables. We name them for clarity */
 let make = (_children) => {
   ...component,
@@ -134,7 +134,7 @@ let make = (_children) => {
             <Grid>
               <Row>
                 <Col md=4>
-                  <img src="https://www.placecage.com/300/400" style=imageStyle />
+                  <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
                 </Col>
                 <Col md=4>
                   <p style=contentStyle>
@@ -142,7 +142,7 @@ let make = (_children) => {
                   </p>
                 </Col>
                 <Col md=4>
-                  <img src="https://www.placecage.com/300/400" style=imageStyle />
+                  <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
                 </Col>
               </Row>
             </Grid>
