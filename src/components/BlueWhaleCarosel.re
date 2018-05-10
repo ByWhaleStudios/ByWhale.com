@@ -21,6 +21,13 @@ type action =
   | OnExiting
 ;
 
+let fullWidthImageStyle =
+  ReactDOMRe.Style.make(
+    ~height="auto",
+    ~width="100%",
+    ()
+  );
+
 let slides = (items, send) =>
   Belt.List.mapWithIndex(items, (idx, item) =>
     <CarouselItem
@@ -29,7 +36,7 @@ let slides = (items, send) =>
       onExiting=(() => send(OnExiting))
       onExited=(() => send(OnExited))
     >
-      <img src=item.src alt=item.altText />
+      <img src=item.src alt=item.altText style=fullWidthImageStyle/>
       <CarouselCaption
         captionText=item.caption
         captionHeader=item.caption
