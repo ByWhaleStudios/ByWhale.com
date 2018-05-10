@@ -20,6 +20,7 @@ let contentStyle =
 let titleStyle =
   ReactDOMRe.Style.make(
     ~color="blue",
+    ~fontSize="50px",
     ~fontWeight="500",
     ~whiteSpace="nowrap",
     ()
