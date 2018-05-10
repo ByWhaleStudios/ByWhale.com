@@ -1,5 +1,6 @@
 let text = ReasonReact.stringToElement;
 
+[@bs.deriving jsConverter]
 type caroselItem = {
   src: string,
   altText: string,
@@ -21,10 +22,9 @@ type action =
 ;
 
 let slides = (items, send) =>
-  Belt.List.mapWithIndex(items, (idx, item) => {
-    Js.log("idx = %j");
-    Js.log(idx);
+  Belt.List.mapWithIndex(items, (idx, item) =>
     <CarouselItem
+      key=(idx |> string_of_int)
       keyVal=(idx |> string_of_int)
       onExiting=(() => send(OnExiting))
       onExited=(() => send(OnExited))
@@ -35,7 +35,7 @@ let slides = (items, send) =>
         captionHeader=item.caption
       />
     </CarouselItem>
-  });
+  );
 
 let component = ReasonReact.reducerComponent("BlueWhaleCarosel");
 
@@ -48,18 +48,20 @@ let make = (~items, children) => {
     activeIndex: 0,
     animating: false,
   },
-  reducer: (action, state : state) =>
+  reducer: (action, state : state) => {
+    let numItems = Belt.List.length(items);
     switch(action){
     | NoOp => ReasonReact.NoUpdate
     | Next =>
-        ReasonReact.Update(updateStateWhenNotAnimating(state, {...state, activeIndex: ((state.activeIndex + 1) mod Belt.List.length(items))}))
+        ReasonReact.Update(updateStateWhenNotAnimating(state, {...state, activeIndex: ((state.activeIndex + 1) mod numItems)}))
     | Previous =>
-        ReasonReact.Update(updateStateWhenNotAnimating(state, {...state, activeIndex: ((state.activeIndex - 1) mod Belt.List.length(items))}))
+        ReasonReact.Update(updateStateWhenNotAnimating(state, {...state, activeIndex: ((state.activeIndex + numItems - 1) mod numItems)}))
     | GoToIndex(activeIndex) =>
         ReasonReact.Update(updateStateWhenNotAnimating(state, {...state, activeIndex}))
     | OnExited => ReasonReact.Update({...state, animating: false})
     | OnExiting => ReasonReact.Update({...state, animating: true})
-    },
+    }
+  },
   render: (self) =>
     <div>
       <Carousel
@@ -68,15 +70,15 @@ let make = (~items, children) => {
         previous=(() => self.send(Previous))
       >
         <CarouselIndicators
-          items=(items)
+          items=(items |> Belt.List.map(_, caroselItemToJs))
           activeIndex=self.state.activeIndex
           onClickHandler=((index) => self.send(GoToIndex(index)))
         />
-          (
-            slides(items, self.send)
-            |> Belt.List.toArray
-            |> ReasonReact.arrayToElement
-          )
+        (
+          slides(items, self.send)
+          |> Belt.List.toArray
+          |> ReasonReact.arrayToElement
+        )
         <CarouselControl
           direction="prev"
           directionText="Previous"

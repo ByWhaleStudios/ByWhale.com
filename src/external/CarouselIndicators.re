@@ -5,7 +5,7 @@ let make = (~items, ~activeIndex, ~onClickHandler, children) =>
   ReasonReact.wrapJsForReason(
     ~reactClass=component,
     ~props={
-      "items": items,
+      "items": items |> Belt.List.toArray,
       "activeIndex": activeIndex,
       "onClickHandler": onClickHandler,
     },

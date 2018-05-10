@@ -81,13 +81,13 @@ let make = (
           switch(title) {
           | Some(titleString) =>
               [
-                <div style=titleStyle>
+                <div key="title" style=titleStyle>
                   <h1 className="h1" style=paragraphStyle(titleTextStyle)>
                     (text(titleString))
                   </h1>
                 </div>,
-                <div style=middleStyle />,
-                <div style=otherBox(top)>
+                <div key="space" style=middleStyle />,
+                <div key="dash" style=otherBox(top)>
                   <div style=dashedLineStyle />
                 </div>,
               ]
