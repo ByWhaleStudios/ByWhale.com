@@ -31,7 +31,7 @@ let byWhaleTitleStyle =
     ~color="blue",
     ~fontSize="70px",
     ~fontWeight="700",
-    ~fontFamily="Avenir Black",
+    ~fontFamily="Avenir Heavy",
     ()
   );
 
