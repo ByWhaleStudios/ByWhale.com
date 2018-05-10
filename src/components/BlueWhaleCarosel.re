@@ -21,7 +21,9 @@ type action =
 ;
 
 let slides = (items, send) =>
-  Belt.List.mapWithIndex(items, (idx, item) => 
+  Belt.List.mapWithIndex(items, (idx, item) => {
+    Js.log("idx = %j");
+    Js.log(idx);
     <CarouselItem
       key=(idx |> string_of_int)
       onExiting=(() => send(OnExiting))
@@ -33,7 +35,7 @@ let slides = (items, send) =>
         captionHeader=item.caption
       />
     </CarouselItem>
-  );
+  });
 
 let component = ReasonReact.reducerComponent("BlueWhaleCarosel");
 
