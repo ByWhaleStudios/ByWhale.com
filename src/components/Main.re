@@ -14,6 +14,7 @@ let titleStyle =
   ReactDOMRe.Style.make(
     ~color="blue",
     ~whiteSpace="nowrap",
+    ~marginBottom="1rem",
     ()
   );
 
