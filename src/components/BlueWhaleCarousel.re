@@ -44,7 +44,7 @@ let slides = (items, send) =>
     </CarouselItem>
   );
 
-let component = ReasonReact.reducerComponent("BlueWhaleCarosel");
+let component = ReasonReact.reducerComponent("BlueWhaleCarousel");
 
 let updateStateWhenNotAnimating = (state, newState) =>
   state.animating ? state : newState;

@@ -2,17 +2,19 @@ let text = ReasonReact.stringToElement;
 
 let component = ReasonReact.statelessComponent("Main");
 
+[@bs.module] external ccc1 : string = "../../../../public/ClickCodeCreate1.png";
+[@bs.module] external ccc2 : string = "../../../../public/ClickCodeCreate2.png";
+[@bs.module] external ccc3 : string = "../../../../public/ClickCodeCreate3.png";
+
 let contentStyle =
   ReactDOMRe.Style.make(
     ~fontSize="24px",
-    ~color="blue",
     ~textJustify="none",
     ()
   );
 
 let titleStyle =
   ReactDOMRe.Style.make(
-    ~color="blue",
     ~whiteSpace="nowrap",
     ~marginBottom="1rem",
     ()
@@ -20,7 +22,6 @@ let titleStyle =
 
 let byWhaleTitleStyle =
   ReactDOMRe.Style.make(
-    ~color="blue",
     ~fontSize="70px",
     ~fontWeight="700",
     ~fontFamily="Avenir Heavy",
@@ -39,31 +40,7 @@ let gridStyle =
     ()
   );
 
-let dashedTop =
-  ReactDOMRe.Style.make(
-    /*~alignSelf="flex-end",*/
-    ~display="inline-block",
-    ~overflow="auto",
-    ~borderTop="dashed 10px blue",
-    ~borderWidth="5px",
-    ~alignSelf="flex-end",
-    ~width="100%",
-    ~height="100%",
-    ()
-  );
-
-let byWhaleTop =
-  ReactDOMRe.Style.make(
-    ~display="flex",
-    ~alignItems="stretch",
-    ~margin="0",
-    ~padding="0",
-    ~borderLeft="dashed 10px blue",
-    ~borderWidth="5px",
-    ()
-  );
-
-let items : list(BlueWhaleCarosel.caroselItem) = [
+let items : list(BlueWhaleCarousel.caroselItem) = [
   {
     src: "https://www.placecage.com/400/400",
     altText: "Slide 1",
@@ -78,6 +55,24 @@ let items : list(BlueWhaleCarosel.caroselItem) = [
     src: "https://www.placecage.com/400/400",
     altText: "Slide 3",
     caption: "Slide 3"
+  }
+];
+
+let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
+  {
+    src: ccc1,
+    altText: "",
+    caption: ""
+  },
+  {
+    src: ccc2,
+    altText: "",
+    caption: ""
+  },
+  {
+    src: ccc3,
+    altText: "",
+    caption: ""
   }
 ];
 
@@ -154,14 +149,15 @@ let make = (_children) => {
               <Row>
                 <Col md=5>
                   <div>
-                    <h1>(text("Illume Positive reminder app"))</h1>
+                    <h2 className="h2">(text("Click Code Create"))</h2>
+                    <br/>
                     <p style=contentStyle>
-                      (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
+                      (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
                     </p>
                   </div>
                 </Col>
                 <Col md=7>
-                  <BlueWhaleCarosel items=items/>
+                  <BlueWhaleCarousel items=clickCodeCreateCarouselItems/>
                 </Col>
               </Row>
             </Grid>
@@ -170,11 +166,12 @@ let make = (_children) => {
             <Grid>
               <Row>
                 <Col md=7>
-                  <BlueWhaleCarosel items=items/>
+                  <BlueWhaleCarousel items=items/>
                 </Col>
                 <Col md=5>
                   <div>
-                    <h1>(text("Illume Positive reminder app"))</h1>
+                    <h2 className="h2">(text("Illume Positive reminder app"))</h2>
+                    <br/>
                     <p style=contentStyle>
                       (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
                     </p>
