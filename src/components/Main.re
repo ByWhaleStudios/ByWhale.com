@@ -330,7 +330,7 @@ let make = (_children) => {
                   (text("7.Follow"))
                 </h2>
                 <p style=contentStyle>
-                  <a href="https://medium.com/@bywhale" className="a">
+                  <a href="https://medium.com/@bywhale." className="a">
                     (text("Medium"))
                   </a>
                   <br/>
