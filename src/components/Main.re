@@ -218,7 +218,17 @@ let make = (_children) => {
               </Col>
               <Col md=4>
                 <p style=contentStyle>
-                  (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
+                  (text("Lama: Greg I need a little change."))
+                  <br />
+                  (text("Greg: Ughhh sure.  Whats up?"))
+                  <br />
+                  (text("Lama: Just make the logo 5 points bigger."))
+                  <br />
+                  (text("Greg: Wait what?  I don't understand."))
+                  <br />
+                  (text("Lama: What don't you understand."))
+                  <br />
+                  (text("Greg: What the hell is a point?"))
                 </p>
               </Col>
               <Col md=4>
