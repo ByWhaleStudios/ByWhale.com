@@ -4,14 +4,13 @@ let component = ReasonReact.statelessComponent("SectionDashed");
 
 let sectionStyle =
   ReactDOMRe.Style.make(
-    ~marginBottom="10px",
+    ~marginBottom="1em",
     ()
   );
 
 let contentStyle =
   ReactDOMRe.Style.make(
-    ~paddingTop="40px",
-    ~paddingBottom="40px",
+    ~marginBottom="1.5em",
     ()
   );
 
@@ -19,8 +18,10 @@ let make = (~title=?, ~orientation=?, children) => {
   ...component,
   render: _self =>
     <div style=sectionStyle>
-      <SectionDashedBorderTop orientation=Belt.Option.getWithDefault(orientation, Orientation.Left) title=title />
-      (ReasonReact.createDomElement("div", ~props={"style": contentStyle}, children))
+      <div style=contentStyle>
+        <SectionDashedBorderTop orientation=Belt.Option.getWithDefault(orientation, Orientation.Left) title=title />
+      </div>
+      (ReasonReact.createDomElement("div", ~props=Js.Obj.empty(), children))
 
     </div>
 };

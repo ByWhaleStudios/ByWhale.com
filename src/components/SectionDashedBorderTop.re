@@ -50,7 +50,7 @@ let paragraphStyle = (titleTextStyle) =>
 
 let middleStyle =
   ReactDOMRe.Style.make(
-    ~width="20px",
+    ~width="1em",
     ()
   );
 

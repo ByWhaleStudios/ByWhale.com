@@ -15,7 +15,7 @@ let contentStyle =
 let titleStyle =
   ReactDOMRe.Style.make(
     ~whiteSpace="nowrap",
-    ~marginBottom="1rem",
+    ~marginBottom="rem",
     ()
   );
 

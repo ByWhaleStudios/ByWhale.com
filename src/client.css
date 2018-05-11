@@ -3,7 +3,7 @@ body {
   
 }
 #root{
-  padding: 20px;
+  padding: 1em;
   background-color: #fefcf5;
   font-family: "Andale Mono", AndaleMono, monospace;
   color: blue;
