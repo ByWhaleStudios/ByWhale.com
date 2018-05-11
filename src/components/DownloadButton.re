@@ -6,9 +6,9 @@ let buttonStyle =
   ReactDOMRe.Style.make(
     ~color="white",
     ~backgroundColor="blue",
-    ~fontSize=".7em",
+    ~fontSize=".6em",
     ~width="11em",
-    ~height="2.2em",
+    ~height="2.5em",
     ~display="flex",
     ~justifyContent="center",
     ~alignItems="center",

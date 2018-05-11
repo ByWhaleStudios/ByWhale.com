@@ -104,11 +104,11 @@ let flexCenter =
     ()
   );
 
-let flexSpaceAround =
+let flexSpaceBetween =
   ReactDOMRe.Style.make(
     ~display="flex",
     ~alignItems="center",
-    ~justifyContent="space-around",
+    ~justifyContent="space-between",
     ()
   );
   
@@ -202,7 +202,7 @@ let make = (_children) => {
                     <p style=contentStyle>
                       (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
                     </p>
-                    <div style=flexSpaceAround>
+                    <div style=flexSpaceBetween>
                       <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
                       <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
                     </div>
