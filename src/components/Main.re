@@ -102,13 +102,16 @@ let byWhaleBox =
 
 let envelopeStyle =
   ReactDOMRe.Style.make(
-    ~marginBottom=".25em",
+    ~marginBottom=".28em",
     ()
   );
 
-let titleSpace =
+let flexEnd =
   ReactDOMRe.Style.make(
-    ~marginBottom="2.45em",
+    ~height="100%",
+    ~width="100%",
+    ~display="flex",
+    ~alignItems="flex-end",
     ()
   );
 
@@ -327,12 +330,9 @@ let make = (_children) => {
                 </p>
               </Col>
               <Col md=3>
-                <div style=titleSpace />
-                <p style=contentStyle>
-                  <br/>
-                  <br/>
-                  (text("back to top"))
-                </p>
+                <div style=flexEnd>
+                  <p>(text("back to top"))</p>
+                </div>
               </Col>
             </Row>
           </SectionDashed>
