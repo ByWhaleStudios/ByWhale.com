@@ -5,10 +5,9 @@ let component = ReasonReact.statelessComponent("SectionDashedBorderTop");
 let dashedLineStyle =
   ReactDOMRe.Style.make(
     ~display="inline-block",
-    ~borderBottom="dashed 10px blue",
+    ~borderBottom="dashed 5px blue",
     ~height="100%",
     ~width="100%",
-    ~borderWidth="5px",
     ~overflow="auto",
     ~padding="0",
     ~margin="0",
@@ -22,17 +21,15 @@ let flex =
     ()
   );
 
-let otherBox = (top) =>
+let otherBox =
   ReactDOMRe.Style.make(
-    ~alignSelf=top ? "flex-start" : "flex-end",
+    ~alignSelf="flex-end",
     ~width="100%",
-    ~marginTop=(top ?"-21px" : "7px"),
     ()
   );
 
 let titleStyle =
   ReactDOMRe.Style.make(
-    ~color="blue",
     ~whiteSpace="nowrap",
     ()
   );
@@ -42,6 +39,7 @@ let paragraphStyle = (titleTextStyle) =>
   Belt.Option.getWithDefault(
     titleTextStyle,
     ReactDOMRe.Style.make(
+      ~lineHeight=".95em",
       ~marginBottom="0",
       ~paddingBottom="0",
       ()
@@ -54,28 +52,16 @@ let middleStyle =
     ()
   );
 
-let borderStyle = (borders) =>
-  switch(borders){
-  | true =>
-    ReactDOMRe.Style.make(
-      ~borderLeft="dashed 10px blue",
-      ~borderWidth="5px",
-      ()
-    )
-  | false =>
-      ReactDOMRe.Style.make(())
-  };
 let make = (
   ~title : option(string),
   ~orientation=Orientation.Left,
-  ~top=false,
   ~borders=false,
   ~titleTextStyle=?,
   _children
 ) => {
   ...component,
   render: _self =>
-    <div style=borderStyle(borders)>
+    <div>
       <div style=flex>
         (
           switch(title) {
@@ -87,7 +73,7 @@ let make = (
                   </h1>
                 </div>,
                 <div key="space" style=middleStyle />,
-                <div key="dash" style=otherBox(top)>
+                <div key="dash" style=otherBox>
                   <div style=dashedLineStyle />
                 </div>,
               ]
@@ -95,7 +81,7 @@ let make = (
               |> Belt.List.toArray
               |> ReasonReact.arrayToElement
           | None =>
-              <div style=otherBox(top)>
+              <div style=otherBox>
                 <div style=dashedLineStyle />
               </div>
           }

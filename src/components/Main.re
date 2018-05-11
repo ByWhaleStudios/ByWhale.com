@@ -12,6 +12,9 @@ let contentStyle =
     ()
   );
 
+let dashWidth = 5;
+let backgroundColor = "#fefcf5";
+
 let titleStyle =
   ReactDOMRe.Style.make(
     ~whiteSpace="nowrap",
@@ -23,18 +26,20 @@ let byWhaleTitleStyle =
   ReactDOMRe.Style.make(
     ~fontWeight="700",
     ~fontFamily="Avenir Heavy",
+    ~margin="0",
+    ~padding="0",
+    ~lineHeight=".75",
     ()
   );
 
 let gridStyle =
   ReactDOMRe.Style.make(
-    ~borderWidth="5px",
     ~padding="0 8%",
+    ~marginTop="6em",
     ~margin="0",
     ~width="100%",
     ~height="100%",
     ~maxWidth="100%",
-    ~borderRight="dashed 10px blue",
     ()
   );
 
@@ -76,6 +81,7 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
 
 let appStyle =
   ReactDOMRe.Style.make(
+    ~position="relative",
     ~width="100%",
     ~height="100%",
     ~maxWidth="100%",
@@ -83,9 +89,8 @@ let appStyle =
     ~paddingBottom="0",
     ~marginTop="0",
     ~marginBottom="0",
-    ~borderWidth="5px",
-    ~borderLeft="dashed 10px blue",
-    ~borderBottom="dashed 10px blue",
+    ~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",
+    ~boxSizing="border-box",
     ()
   );
 
@@ -120,13 +125,28 @@ let fullWidthImageStyle =
     ()
   );
 
+let byWhaleBox =
+  ReactDOMRe.Style.make(
+    ~position="absolute",
+    ~top="-" ++ (dashWidth |> string_of_int) ++ "px",
+    ~right="-" ++ (dashWidth |> string_of_int) ++ "px",
+    ~paddingLeft=".2em",
+    ~paddingBottom=".2em",
+    ~backgroundColor=backgroundColor,
+    ()
+  );
+
 /* underscore before names indicate unused variables. We name them for clarity */
 let make = (_children) => {
   ...component,
   render: _self =>
     <div>
       <div style=appStyle>
-        <SectionDashedBorderTop title=Some("bywhale.") orientation=Orientation.Right top=true titleTextStyle=byWhaleTitleStyle/>
+        <div style=byWhaleBox>
+          <h1 className="h1" style=byWhaleTitleStyle>
+            (text("bywhale."))
+          </h1>
+        </div>
         <div style=gridStyle>
           <SectionDashed
             orientation=Orientation.Left
