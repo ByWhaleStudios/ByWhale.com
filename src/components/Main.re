@@ -28,7 +28,7 @@ let byWhaleTitleStyle =
     ~fontFamily="Avenir Next",
     ~margin="0",
     ~padding="0",
-    ~lineHeight=".75",
+    ~lineHeight=".9",
     ()
   );
 
@@ -95,7 +95,6 @@ let byWhaleBox =
     ~top="-" ++ (dashWidth |> string_of_int) ++ "px",
     ~right="-" ++ (dashWidth |> string_of_int) ++ "px",
     ~paddingLeft=".2em",
-    ~paddingBottom=".2em",
     ~backgroundColor=backgroundColor,
     ()
   );
