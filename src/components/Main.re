@@ -43,8 +43,6 @@ let gridStyle =
     ()
   );
 
-
-
 let appStyle =
   ReactDOMRe.Style.make(
     ~position="relative",
@@ -210,7 +208,7 @@ let make = (_children) => {
               <Row>
                 <Col md=5>
                   <div>
-                    <h2 className="h2">(text("Click Code Create"))</h2>
+                    <h3 className="h3">(text("Click Code Create"))</h3>
                     <br/>
                     <p style=contentStyle>
                       (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
@@ -231,7 +229,7 @@ let make = (_children) => {
                 </Col>
                 <Col md=5>
                   <div>
-                    <h2 className="h2">(text("Illume Positive reminder app"))</h2>
+                    <h3 className="h3">(text("Illume Positive reminder app"))</h3>
                     <br/>
                     <p style=contentStyle>
                       (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))

@@ -51,6 +51,12 @@ h2.h2 {
   font-weight: 400;
 }
 
+h3.h3 {
+  font-family: "Andale Mono WT", AndaleMono, monospace;
+  font-size: 1.3em;
+  font-weight: bolder;
+}
+
 .App {
   text-align: center;
 }
