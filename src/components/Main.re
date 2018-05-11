@@ -139,6 +139,12 @@ let footerStyle =
     ()
   );
 
+let lastSectionStyle =
+  ReactDOMRe.Style.make(
+    ~marginBottom="5em",
+    ()
+  );
+
 let module Document = {
   [@bs.val] [@bs.scope ("window")] external scrollTo : (int, int) => unit = "scrollTo";
 };
@@ -304,7 +310,7 @@ let make = (_children) => {
             </Row>
           </SectionDashed>
           <SectionDashed orientation=Orientation.Left>
-            <Row>
+            <Row style=lastSectionStyle>
               <Col md=6>
                 <h2 style=titleStyle className="h2">
                   (text("5.About"))
