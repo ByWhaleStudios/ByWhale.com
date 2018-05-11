@@ -117,17 +117,17 @@ let envelopeStyle =
 
 let items : list(BlueWhaleCarousel.caroselItem) = [
   {
-    src: "https://www.placecage.com/400/400",
+    src: "http://www.placekitten.com/400/400",
     altText: "Slide 1",
     caption: "Slide 1"
   },
   {
-    src: "https://www.placecage.com/400/400",
+    src: "http://www.placekitten.com/400/400",
     altText: "Slide 2",
     caption: "Slide 2"
   },
   {
-    src: "https://www.placecage.com/400/400",
+    src: "http://www.placekitten.com/400/400",
     altText: "Slide 3",
     caption: "Slide 3"
   }
@@ -177,7 +177,7 @@ let make = (_children) => {
             <Grid>
               <Row>
                 <Col md=4>
-                  <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
+                  <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
                     <a style=emailStyle href="mailto:greg@bywhale.com">
                       <FaEnvelope style=envelopeStyle/>
@@ -191,7 +191,7 @@ let make = (_children) => {
                   </p>
                 </Col>
                 <Col md=4>
-                  <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
+                  <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
                     <a style=emailStyle href="mailto:lama@bywhale.com">
                       <FaEnvelope style=envelopeStyle/>
