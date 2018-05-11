@@ -305,7 +305,7 @@ let make = (_children) => {
           </SectionDashed>
           <SectionDashed orientation=Orientation.Left>
             <Row>
-              <Col md=3>
+              <Col md=6>
                 <h2 style=titleStyle className="h2">
                   (text("5.About"))
                 </h2>
@@ -343,7 +343,6 @@ let make = (_children) => {
                   </a>
                 </p>
               </Col>
-              <Col md=3 />
             </Row>
           </SectionDashed>
           <Row style=footerStyle>
