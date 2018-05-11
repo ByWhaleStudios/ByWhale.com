@@ -96,10 +96,27 @@ let flex =
     ()
   );
 
+let flexCenter =
+  ReactDOMRe.Style.make(
+    ~display="flex",
+    ~alignItems="center",
+    ~justifyContent="center",
+    ()
+  );
+
+let flexSpaceAround =
+  ReactDOMRe.Style.make(
+    ~display="flex",
+    ~alignItems="center",
+    ~justifyContent="space-around",
+    ()
+  );
+  
 let fullWidthImageStyle =
   ReactDOMRe.Style.make(
     ~height="auto",
     ~width="100%",
+    ~marginBottom="1em",
     ()
   );
 
@@ -127,6 +144,12 @@ let make = (_children) => {
               <Row>
                 <Col md=4>
                   <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
+                  <div style=flexCenter>
+                    <a href="mailto:greg@bywhale.com">
+                      <FaEnvelope />
+                      (text("  EMAIL GREG"))
+                    </a>
+                  </div>
                 </Col>
                 <Col md=4>
                   <p style=contentStyle>
@@ -135,6 +158,12 @@ let make = (_children) => {
                 </Col>
                 <Col md=4>
                   <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
+                  <div style=flexCenter>
+                    <a href="mailto:lama@bywhale.com">
+                      <FaEnvelope />
+                      (text("  EMAIL LAMA"))
+                    </a>
+                  </div>
                 </Col>
               </Row>
             </Grid>
@@ -173,6 +202,10 @@ let make = (_children) => {
                     <p style=contentStyle>
                       (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
                     </p>
+                    <div style=flexSpaceAround>
+                      <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
+                      <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
+                    </div>
                   </div>
                 </Col>
               </Row>
