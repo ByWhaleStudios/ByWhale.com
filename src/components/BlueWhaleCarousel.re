@@ -76,11 +76,7 @@ let make = (~items, _children) => {
         next=(() => self.send(Next))
         previous=(() => self.send(Previous))
       >
-        <CarouselIndicators
-          items=(items |> Belt.List.map(_, caroselItemToJs))
-          activeIndex=self.state.activeIndex
-          onClickHandler=((index) => self.send(GoToIndex(index)))
-        />
+        
         (
           slides(items, self.send)
           |> Belt.List.toArray
@@ -97,5 +93,11 @@ let make = (~items, _children) => {
           onClickHandler=(() => self.send(Next))
         />
       </Carousel>
+      <CarouselIndicators
+        className="BlueWhaleCaroselIndicator"
+        items=(items |> Belt.List.map(_, caroselItemToJs))
+        activeIndex=self.state.activeIndex
+        onClickHandler=((index) => self.send(GoToIndex(index)))
+      />
     </div>
 };

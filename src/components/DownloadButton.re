@@ -10,6 +10,7 @@ let buttonStyle =
     ~width="11em",
     ~height="2.5em",
     ~display="flex",
+    ~marginRight="1em",
     ~justifyContent="center",
     ~alignItems="center",
     ()

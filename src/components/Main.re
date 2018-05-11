@@ -77,7 +77,7 @@ let flexSpaceBetween =
   ReactDOMRe.Style.make(
     ~display="flex",
     ~alignItems="center",
-    ~justifyContent="space-between",
+    ~justifyContent="flex-start",
     ()
   );
   
@@ -100,16 +100,34 @@ let byWhaleBox =
     ()
   );
 
-let emailStyle =
+let envelopeStyle =
   ReactDOMRe.Style.make(
-    ~color="blue",
+    ~marginBottom=".25em",
     ()
   );
 
-let envelopeStyle =
+let titleSpace =
   ReactDOMRe.Style.make(
-    ~fontSize=".8em",
-    ~marginBottom=".3em",
+    ~marginBottom="2.45em",
+    ()
+  );
+
+let centeredContent =
+  ReactDOMRe.Style.make(
+    ~display="flex",
+    ~height="100%",
+    ~width="100%",
+    ~alignItems="center",
+    ()
+  );
+
+let footerStyle =
+  ReactDOMRe.Style.make(
+    ~display="flex",
+    ~fontWeight="700",
+    ~width="100%",
+    ~marginBottom="2em",
+    ~justifyContent="center",
     ()
   );
 
@@ -160,23 +178,17 @@ let make = (_children) => {
           </h1>
         </div>
         <div style=gridStyle>
-          <SectionDashed
-            orientation=Orientation.Left
-            title="1.News"
-          >
+          <SectionDashed orientation=Orientation.Left title="1.News">
             <p style=contentStyle>
               (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
             </p>
           </SectionDashed>
-          <SectionDashed
-            orientation=Orientation.Right
-            title="2.Team"
-          >
+          <SectionDashed orientation=Orientation.Right title="2.Team">
             <Row>
               <Col md=4>
                 <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                 <div style=flexCenter>
-                  <a style=emailStyle href="mailto:greg@bywhale.com">
+                  <a className="a" href="mailto:greg@bywhale.com">
                     <FaEnvelope style=envelopeStyle/>
                     (text("   EMAIL GREG"))
                   </a>
@@ -190,7 +202,7 @@ let make = (_children) => {
               <Col md=4>
                 <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                 <div style=flexCenter>
-                  <a style=emailStyle href="mailto:lama@bywhale.com">
+                  <a className="a" href="mailto:lama@bywhale.com">
                     <FaEnvelope style=envelopeStyle/>
                     (text("   EMAIL LAMA"))
                   </a>
@@ -198,18 +210,17 @@ let make = (_children) => {
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed
-            orientation=Orientation.Left
-            title="3.Work"
-          >
+          <SectionDashed orientation=Orientation.Left title="3.Work">
             <Row>
               <Col md=5>
-                <div>
-                  <h3 className="h3">(text("Click Code Create"))</h3>
-                  <br/>
-                  <p style=contentStyle>
-                    (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
-                  </p>
+                <div style=centeredContent>
+                  <div>
+                    <h3 className="h3">(text("Click Code Create"))</h3>
+                    <br/>
+                    <p style=contentStyle>
+                      (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
+                    </p>
+                  </div>
                 </div>
               </Col>
               <Col md=7>
@@ -223,25 +234,25 @@ let make = (_children) => {
                 <BlueWhaleCarousel items=items/>
               </Col>
               <Col md=5>
-                <div>
-                  <h3 className="h3">(text("Illume Positive reminder app"))</h3>
-                  <br/>
-                  <p style=contentStyle>
-                    (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
-                  </p>
-                  <div style=flexSpaceBetween>
-                    <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
-                    <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
+                <div style=centeredContent>
+                  <div>
+                    <h3 className="h3">(text("Illume Positive reminder app"))</h3>
+                    <br/>
+                    <p style=contentStyle>
+                      (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
+                    </p>
+                    <div style=flexSpaceBetween>
+                      <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
+                      <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
+                    </div>
                   </div>
                 </div>
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed
-            title="4.Services"
-          >
+          <SectionDashed title="4.Services">
             <Row>
-              <Col md=4>
+              <Col md=3>
                 <div>(text("Art Direction"))</div>
                 <div>(text("Branding"))</div>
                 <div>(text("Consultancy"))</div>
@@ -249,7 +260,7 @@ let make = (_children) => {
                 <div>(text("Concept Development"))</div>
                 <div>(text("Design"))</div>
               </Col>
-              <Col md=4>
+              <Col md=3>
                 <div>(text("Art Direction"))</div>
                 <div>(text("Branding"))</div>
                 <div>(text("Consultancy"))</div>
@@ -257,7 +268,15 @@ let make = (_children) => {
                 <div>(text("Concept Development"))</div>
                 <div>(text("Design"))</div>
               </Col>
-              <Col md=4>
+              <Col md=3>
+                <div>(text("Art Direction"))</div>
+                <div>(text("Branding"))</div>
+                <div>(text("Consultancy"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Design"))</div>
+              </Col>
+              <Col md=3>
                 <div>(text("Art Direction"))</div>
                 <div>(text("Branding"))</div>
                 <div>(text("Consultancy"))</div>
@@ -267,11 +286,9 @@ let make = (_children) => {
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed
-            orientation=Orientation.Left
-          >
+          <SectionDashed orientation=Orientation.Left>
             <Row>
-              <Col md=4>
+              <Col md=3>
                 <h2 style=titleStyle className="h2">
                   (text("5.About"))
                 </h2>
@@ -279,7 +296,7 @@ let make = (_children) => {
                   (text("by whale.  is a design, coding, and product development studio based in New York City."))
                 </p>
               </Col>
-              <Col md=4>
+              <Col md=3>
                 <h2 style=titleStyle className="h2">
                   (text("6.Address"))
                 </h2>
@@ -291,22 +308,39 @@ let make = (_children) => {
                   (text("New York, NY 11201"))
                 </p>
               </Col>
-              <Col md=4>
+              <Col md=3>
                 <h2 style=titleStyle className="h2">
                   (text("7.Follow"))
                 </h2>
                 <p style=contentStyle>
-                  (text("Medium"))
+                  <a href="https://medium.com/@bywhale" className="a">
+                    (text("Medium"))
+                  </a>
                   <br/>
-                  (text("Linkedn"))
+                  <a href="https://www.linkedin.com/company/bywhale/" className="a">
+                    (text("Linkedn"))
+                  </a>
                   <br/>
-                  (text("Instagram"))
+                  <a href="https://www.instagram.com/bywhale.nyc" className="a">
+                    (text("Instagram"))
+                  </a>
+                </p>
+              </Col>
+              <Col md=3>
+                <div style=titleSpace />
+                <p style=contentStyle>
                   <br/>
-                  (text("Twitter"))
+                  <br/>
+                  (text("back to top"))
                 </p>
               </Col>
             </Row>
           </SectionDashed>
+          <div style=footerStyle>
+            <div>
+              (text("All Copyright 2018"))
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -47,14 +47,35 @@ h1.h1 {
 }
 
 h2.h2 {
-  font-size: 2em;
+  font-size: 1.8em;
   font-weight: 400;
 }
 
 h3.h3 {
   font-family: "Andale Mono WT", AndaleMono, monospace;
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-weight: bolder;
+}
+
+/* this is a hack job figure out how to control the css class */
+ol.BlueWhaleCaroselIndicator {
+  position: relative;
+  margin-top: 2em;
+}
+
+ol.BlueWhaleCaroselIndicator > li {
+  height: .6em;
+  width: .6em;
+  border-radius: 50%;
+  background-color: #d3d3d3;
+}
+
+ol.BlueWhaleCaroselIndicator > li.active {
+  background-color: blue;
+}
+
+a.a {
+  color: blue;
 }
 
 .App {
