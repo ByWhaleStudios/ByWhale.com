@@ -129,10 +129,16 @@ let footerStyle =
     ~display="flex",
     ~fontWeight="700",
     ~width="100%",
-    ~marginBottom="2em",
+    ~marginBottom=".8em",
     ~justifyContent="center",
     ()
   );
+
+let scrollToTop = () => {
+  ()
+  /*window.scrollTo(x-coord, y-coord);*/
+};
+
 
 let items : list(BlueWhaleCarousel.caroselItem) = [
   {
@@ -329,18 +335,22 @@ let make = (_children) => {
                   </a>
                 </p>
               </Col>
-              <Col md=3>
-                <div style=flexEnd>
-                  <p>(text("back to top"))</p>
-                </div>
-              </Col>
+              <Col md=3 />
             </Row>
           </SectionDashed>
-          <div style=footerStyle>
-            <div>
-              (text("All Copyright 2018"))
-            </div>
-          </div>
+          <Row>
+            <Col md=3 />
+            <Col md=6>
+              <div style=footerStyle>
+                (text("All Copyright 2018"))
+              </div>
+            </Col>
+            <Col md=3>
+              <div onClick=((_) => scrollToTop())>
+                (text("back to top"))
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </div>

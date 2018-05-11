@@ -6,7 +6,7 @@ let make = (~items, ~className=?, ~activeIndex, ~onClickHandler, children) =>
     ~reactClass=component,
     ~props={
       "items": items |> Belt.List.toArray,
-      "className": className,
+      "className": Js.Nullable.fromOption(className),
       "activeIndex": activeIndex,
       "onClickHandler": onClickHandler,
     },
