@@ -106,12 +106,12 @@ let envelopeStyle =
     ()
   );
 
-let flexEnd =
+let flexHorizontalEnd =
   ReactDOMRe.Style.make(
     ~height="100%",
     ~width="100%",
     ~display="flex",
-    ~alignItems="flex-end",
+    ~justifyContent="flex-end",
     ()
   );
 
@@ -124,20 +124,28 @@ let centeredContent =
     ()
   );
 
-let footerStyle =
+let footerCopyrightStyle =
   ReactDOMRe.Style.make(
     ~display="flex",
-    ~fontWeight="700",
     ~width="100%",
-    ~marginBottom=".8em",
     ~justifyContent="center",
     ()
   );
 
-let scrollToTop = () => {
-  ()
-  /*window.scrollTo(x-coord, y-coord);*/
+let footerStyle =
+  ReactDOMRe.Style.make(
+    ~fontWeight="700",
+    ~marginBottom=".8em",
+    ()
+  );
+
+let module Document = {
+  [@bs.val] [@bs.scope ("window")] external scrollTo : (int, int) => unit = "scrollTo";
 };
+
+
+let scrollToTop = () =>
+  Document.scrollTo(0, 0);
 
 
 let items : list(BlueWhaleCarousel.caroselItem) = [
@@ -338,16 +346,18 @@ let make = (_children) => {
               <Col md=3 />
             </Row>
           </SectionDashed>
-          <Row>
+          <Row style=footerStyle>
             <Col md=3 />
             <Col md=6>
-              <div style=footerStyle>
+              <div style=footerCopyrightStyle>
                 (text("All Copyright 2018"))
               </div>
             </Col>
             <Col md=3>
-              <div onClick=((_) => scrollToTop())>
-                (text("back to top"))
+              <div style=flexHorizontalEnd>
+                <a className="a" onClick=((_) => scrollToTop()) href="javascript:void(0)">
+                  (text("back to top"))
+                </a>
               </div>
             </Col>
           </Row>
