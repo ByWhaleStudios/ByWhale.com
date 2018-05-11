@@ -207,7 +207,7 @@ let make = (_children) => {
           </SectionDashed>
           <SectionDashed orientation=Orientation.Right title="2.Team">
             <Row>
-              <Col md=4>
+              <Col md=3>
                 <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                 <div style=flexCenter>
                   <a className="a" href="mailto:greg@bywhale.com">
@@ -216,13 +216,13 @@ let make = (_children) => {
                   </a>
                 </div>
               </Col>
-              <Col md=4>
+              <Col md=6>
                 <p style=contentStyle>
                   (text("Lama: Greg I need a little change."))
                   <br />
                   (text("Greg: Ughhh sure.  Whats up?"))
                   <br />
-                  (text("Lama: Just make the logo 5 points bigger."))
+                  (text("Lama: Make the logo 5 points bigger."))
                   <br />
                   (text("Greg: Wait what?  I don't understand."))
                   <br />
@@ -231,7 +231,7 @@ let make = (_children) => {
                   (text("Greg: What the hell is a point?"))
                 </p>
               </Col>
-              <Col md=4>
+              <Col md=3>
                 <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                 <div style=flexCenter>
                   <a className="a" href="mailto:lama@bywhale.com">
