@@ -35,7 +35,7 @@ let byWhaleTitleStyle =
 let gridStyle =
   ReactDOMRe.Style.make(
     ~padding="0 8%",
-    ~marginTop="6em",
+    ~marginTop="4em",
     ~margin="0",
     ~width="100%",
     ~height="100%",
