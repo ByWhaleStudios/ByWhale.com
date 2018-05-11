@@ -15,7 +15,7 @@ let buttonStyle =
     ()
   );
 
-let make = (~buttonText, ~href, children) => {
+let make = (~buttonText, ~href, _children) => {
   ...component,
   render: _self =>
     <a style=buttonStyle href=href>

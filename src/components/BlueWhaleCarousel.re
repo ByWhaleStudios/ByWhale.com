@@ -49,7 +49,7 @@ let component = ReasonReact.reducerComponent("BlueWhaleCarousel");
 let updateStateWhenNotAnimating = (state, newState) =>
   state.animating ? state : newState;
 
-let make = (~items, children) => {
+let make = (~items, _children) => {
   ...component,
   initialState: () => {
     activeIndex: 0,

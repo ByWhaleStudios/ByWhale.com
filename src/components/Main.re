@@ -43,41 +43,7 @@ let gridStyle =
     ()
   );
 
-let items : list(BlueWhaleCarousel.caroselItem) = [
-  {
-    src: "https://www.placecage.com/400/400",
-    altText: "Slide 1",
-    caption: "Slide 1"
-  },
-  {
-    src: "https://www.placecage.com/400/400",
-    altText: "Slide 2",
-    caption: "Slide 2"
-  },
-  {
-    src: "https://www.placecage.com/400/400",
-    altText: "Slide 3",
-    caption: "Slide 3"
-  }
-];
 
-let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
-  {
-    src: ccc1,
-    altText: "",
-    caption: ""
-  },
-  {
-    src: ccc2,
-    altText: "",
-    caption: ""
-  },
-  {
-    src: ccc3,
-    altText: "",
-    caption: ""
-  }
-];
 
 let appStyle =
   ReactDOMRe.Style.make(
@@ -136,7 +102,48 @@ let byWhaleBox =
     ()
   );
 
-/* underscore before names indicate unused variables. We name them for clarity */
+let emailStyle =
+  ReactDOMRe.Style.make(
+    ~color="blue",
+    ()
+  );
+
+let items : list(BlueWhaleCarousel.caroselItem) = [
+  {
+    src: "https://www.placecage.com/400/400",
+    altText: "Slide 1",
+    caption: "Slide 1"
+  },
+  {
+    src: "https://www.placecage.com/400/400",
+    altText: "Slide 2",
+    caption: "Slide 2"
+  },
+  {
+    src: "https://www.placecage.com/400/400",
+    altText: "Slide 3",
+    caption: "Slide 3"
+  }
+];
+
+let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
+  {
+    src: ccc1,
+    altText: "",
+    caption: ""
+  },
+  {
+    src: ccc2,
+    altText: "",
+    caption: ""
+  },
+  {
+    src: ccc3,
+    altText: "",
+    caption: ""
+  }
+];
+
 let make = (_children) => {
   ...component,
   render: _self =>
@@ -165,7 +172,7 @@ let make = (_children) => {
                 <Col md=4>
                   <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
-                    <a href="mailto:greg@bywhale.com">
+                    <a style=emailStyle href="mailto:greg@bywhale.com">
                       <FaEnvelope />
                       (text("  EMAIL GREG"))
                     </a>
@@ -179,7 +186,7 @@ let make = (_children) => {
                 <Col md=4>
                   <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
-                    <a href="mailto:lama@bywhale.com">
+                    <a style=emailStyle href="mailto:lama@bywhale.com">
                       <FaEnvelope />
                       (text("  EMAIL LAMA"))
                     </a>
