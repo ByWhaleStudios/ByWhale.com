@@ -108,6 +108,13 @@ let emailStyle =
     ()
   );
 
+let envelopeStyle =
+  ReactDOMRe.Style.make(
+    ~fontSize=".8em",
+    ~marginBottom=".3em",
+    ()
+  );
+
 let items : list(BlueWhaleCarousel.caroselItem) = [
   {
     src: "https://www.placecage.com/400/400",
@@ -173,8 +180,8 @@ let make = (_children) => {
                   <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
                     <a style=emailStyle href="mailto:greg@bywhale.com">
-                      <FaEnvelope />
-                      (text("  EMAIL GREG"))
+                      <FaEnvelope style=envelopeStyle/>
+                      (text("   EMAIL GREG"))
                     </a>
                   </div>
                 </Col>
@@ -187,8 +194,8 @@ let make = (_children) => {
                   <img src="https://www.placecage.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
                     <a style=emailStyle href="mailto:lama@bywhale.com">
-                      <FaEnvelope />
-                      (text("  EMAIL LAMA"))
+                      <FaEnvelope style=envelopeStyle/>
+                      (text("   EMAIL LAMA"))
                     </a>
                   </div>
                 </Col>
