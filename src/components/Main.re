@@ -164,7 +164,7 @@ let make = (_children) => {
         <div style=gridStyle>
           <SectionDashed
             orientation=Orientation.Left
-            title="1. News"
+            title="1.News"
           >
             <p style=contentStyle>
               (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
@@ -172,7 +172,7 @@ let make = (_children) => {
           </SectionDashed>
           <SectionDashed
             orientation=Orientation.Right
-            title="2. Team"
+            title="2.Team"
           >
             <Grid>
               <Row>
@@ -204,7 +204,7 @@ let make = (_children) => {
           </SectionDashed>
           <SectionDashed
             orientation=Orientation.Left
-            title="3. Work"
+            title="3.Work"
           >
             <Grid>
               <Row>
@@ -246,7 +246,7 @@ let make = (_children) => {
             </Grid>
           </SectionDashed>
           <SectionDashed
-            title="4. Services"
+            title="4.Services"
           >
             <Grid style=contentStyle>
               <Row>
@@ -284,7 +284,7 @@ let make = (_children) => {
               <Row>
                 <Col md=4>
                   <h2 style=titleStyle className="h2">
-                    (text("5. About"))
+                    (text("5.About"))
                   </h2>
                   <p style=contentStyle>
                     (text("by whale.  is a design, coding, and product development studio based in New York City."))
@@ -292,7 +292,7 @@ let make = (_children) => {
                 </Col>
                 <Col md=4>
                   <h2 style=titleStyle className="h2">
-                    (text("6. Address"))
+                    (text("6.Address"))
                   </h2>
                   <p style=contentStyle>
                     (text("68 Jay Street"))
@@ -304,7 +304,7 @@ let make = (_children) => {
                 </Col>
                 <Col md=4>
                   <h2 style=titleStyle className="h2">
-                    (text("7. Follow"))
+                    (text("7.Follow"))
                   </h2>
                   <p style=contentStyle>
                     (text("Medium"))
