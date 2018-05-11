@@ -172,150 +172,140 @@ let make = (_children) => {
             orientation=Orientation.Right
             title="2.Team"
           >
-            <Grid>
-              <Row>
-                <Col md=4>
-                  <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
-                  <div style=flexCenter>
-                    <a style=emailStyle href="mailto:greg@bywhale.com">
-                      <FaEnvelope style=envelopeStyle/>
-                      (text("   EMAIL GREG"))
-                    </a>
-                  </div>
-                </Col>
-                <Col md=4>
-                  <p style=contentStyle>
-                    (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
-                  </p>
-                </Col>
-                <Col md=4>
-                  <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
-                  <div style=flexCenter>
-                    <a style=emailStyle href="mailto:lama@bywhale.com">
-                      <FaEnvelope style=envelopeStyle/>
-                      (text("   EMAIL LAMA"))
-                    </a>
-                  </div>
-                </Col>
-              </Row>
-            </Grid>
+            <Row>
+              <Col md=4>
+                <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
+                <div style=flexCenter>
+                  <a style=emailStyle href="mailto:greg@bywhale.com">
+                    <FaEnvelope style=envelopeStyle/>
+                    (text("   EMAIL GREG"))
+                  </a>
+                </div>
+              </Col>
+              <Col md=4>
+                <p style=contentStyle>
+                  (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
+                </p>
+              </Col>
+              <Col md=4>
+                <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
+                <div style=flexCenter>
+                  <a style=emailStyle href="mailto:lama@bywhale.com">
+                    <FaEnvelope style=envelopeStyle/>
+                    (text("   EMAIL LAMA"))
+                  </a>
+                </div>
+              </Col>
+            </Row>
           </SectionDashed>
           <SectionDashed
             orientation=Orientation.Left
             title="3.Work"
           >
-            <Grid>
-              <Row>
-                <Col md=5>
-                  <div>
-                    <h3 className="h3">(text("Click Code Create"))</h3>
-                    <br/>
-                    <p style=contentStyle>
-                      (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
-                    </p>
-                  </div>
-                </Col>
-                <Col md=7>
-                  <BlueWhaleCarousel items=clickCodeCreateCarouselItems/>
-                </Col>
-              </Row>
-            </Grid>
+            <Row>
+              <Col md=5>
+                <div>
+                  <h3 className="h3">(text("Click Code Create"))</h3>
+                  <br/>
+                  <p style=contentStyle>
+                    (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
+                  </p>
+                </div>
+              </Col>
+              <Col md=7>
+                <BlueWhaleCarousel items=clickCodeCreateCarouselItems/>
+              </Col>
+            </Row>
           </SectionDashed>
           <SectionDashed>
-            <Grid>
-              <Row>
-                <Col md=7>
-                  <BlueWhaleCarousel items=items/>
-                </Col>
-                <Col md=5>
-                  <div>
-                    <h3 className="h3">(text("Illume Positive reminder app"))</h3>
-                    <br/>
-                    <p style=contentStyle>
-                      (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
-                    </p>
-                    <div style=flexSpaceBetween>
-                      <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
-                      <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
-                    </div>
+            <Row>
+              <Col md=7>
+                <BlueWhaleCarousel items=items/>
+              </Col>
+              <Col md=5>
+                <div>
+                  <h3 className="h3">(text("Illume Positive reminder app"))</h3>
+                  <br/>
+                  <p style=contentStyle>
+                    (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
+                  </p>
+                  <div style=flexSpaceBetween>
+                    <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
+                    <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
                   </div>
-                </Col>
-              </Row>
-            </Grid>
+                </div>
+              </Col>
+            </Row>
           </SectionDashed>
           <SectionDashed
             title="4.Services"
           >
-            <Grid style=contentStyle>
-              <Row>
-                <Col md=4>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
-                </Col>
-                <Col md=4>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
-                </Col>
-                <Col md=4>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
-                </Col>
-              </Row>
-            </Grid>
+            <Row>
+              <Col md=4>
+                <div>(text("Art Direction"))</div>
+                <div>(text("Branding"))</div>
+                <div>(text("Consultancy"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Design"))</div>
+              </Col>
+              <Col md=4>
+                <div>(text("Art Direction"))</div>
+                <div>(text("Branding"))</div>
+                <div>(text("Consultancy"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Design"))</div>
+              </Col>
+              <Col md=4>
+                <div>(text("Art Direction"))</div>
+                <div>(text("Branding"))</div>
+                <div>(text("Consultancy"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Concept Development"))</div>
+                <div>(text("Design"))</div>
+              </Col>
+            </Row>
           </SectionDashed>
           <SectionDashed
             orientation=Orientation.Left
           >
-            <Grid>
-              <Row>
-                <Col md=4>
-                  <h2 style=titleStyle className="h2">
-                    (text("5.About"))
-                  </h2>
-                  <p style=contentStyle>
-                    (text("by whale.  is a design, coding, and product development studio based in New York City."))
-                  </p>
-                </Col>
-                <Col md=4>
-                  <h2 style=titleStyle className="h2">
-                    (text("6.Address"))
-                  </h2>
-                  <p style=contentStyle>
-                    (text("68 Jay Street"))
-                    <br/>
-                    (text("Suite 201"))
-                    <br/>
-                    (text("New York, NY 11201"))
-                  </p>
-                </Col>
-                <Col md=4>
-                  <h2 style=titleStyle className="h2">
-                    (text("7.Follow"))
-                  </h2>
-                  <p style=contentStyle>
-                    (text("Medium"))
-                    <br/>
-                    (text("Linkedn"))
-                    <br/>
-                    (text("Instagram"))
-                    <br/>
-                    (text("Twitter"))
-                  </p>
-                </Col>
-              </Row>
-            </Grid>
+            <Row>
+              <Col md=4>
+                <h2 style=titleStyle className="h2">
+                  (text("5.About"))
+                </h2>
+                <p style=contentStyle>
+                  (text("by whale.  is a design, coding, and product development studio based in New York City."))
+                </p>
+              </Col>
+              <Col md=4>
+                <h2 style=titleStyle className="h2">
+                  (text("6.Address"))
+                </h2>
+                <p style=contentStyle>
+                  (text("68 Jay Street"))
+                  <br/>
+                  (text("Suite 201"))
+                  <br/>
+                  (text("New York, NY 11201"))
+                </p>
+              </Col>
+              <Col md=4>
+                <h2 style=titleStyle className="h2">
+                  (text("7.Follow"))
+                </h2>
+                <p style=contentStyle>
+                  (text("Medium"))
+                  <br/>
+                  (text("Linkedn"))
+                  <br/>
+                  (text("Instagram"))
+                  <br/>
+                  (text("Twitter"))
+                </p>
+              </Col>
+            </Row>
           </SectionDashed>
         </div>
       </div>
