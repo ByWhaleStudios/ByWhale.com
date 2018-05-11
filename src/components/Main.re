@@ -25,7 +25,7 @@ let titleStyle =
 let byWhaleTitleStyle =
   ReactDOMRe.Style.make(
     ~fontWeight="700",
-    ~fontFamily="Avenir Heavy",
+    ~fontFamily="Avenir Next",
     ~margin="0",
     ~padding="0",
     ~lineHeight=".75",
