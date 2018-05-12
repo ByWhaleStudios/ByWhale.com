@@ -92,8 +92,8 @@ let fullWidthImageStyle =
 let byWhaleBox =
   ReactDOMRe.Style.make(
     ~position="absolute",
-    ~top="-" ++ (dashWidth |> string_of_int) ++ "px",
-    ~right="-" ++ (dashWidth |> string_of_int) ++ "px",
+    ~top="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+    ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
     ~paddingLeft=".2em",
     ~backgroundColor=backgroundColor,
     ()
