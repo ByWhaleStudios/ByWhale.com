@@ -202,7 +202,7 @@ let make = (_children) => {
         <div style=gridStyle>
           <SectionDashed orientation=Orientation.Left title="1.News">
             <p style=contentStyle>
-              (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."))
+              (text("bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"))
             </p>
           </SectionDashed>
           <SectionDashed orientation=Orientation.Right title="2.Team">
@@ -325,7 +325,7 @@ let make = (_children) => {
                   (text("5.About"))
                 </h2>
                 <p style=contentStyle>
-                  (text("by whale.  is a design, coding, and product development studio based in New York City."))
+                  (text("bywhale. is a creative and technology studio based in New York City."))
                 </p>
               </Col>
               <Col md=3>
