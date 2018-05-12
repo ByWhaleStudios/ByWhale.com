@@ -85,7 +85,7 @@ let fullWidthImageStyle =
   ReactDOMRe.Style.make(
     ~height="auto",
     ~width="100%",
-    ~marginBottom="1em",
+    ~marginBottom=".5em",
     ()
   );
 

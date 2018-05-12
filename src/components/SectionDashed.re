@@ -4,7 +4,7 @@ let component = ReasonReact.statelessComponent("SectionDashed");
 
 let sectionStyle =
   ReactDOMRe.Style.make(
-    ~marginBottom="1em",
+    ~marginBottom="2em",
     ()
   );
 
