@@ -4,9 +4,7 @@ body {
 }
 #root{
   padding: 1em;
-  background-color: #fefcf5;
   font-family: "Andale Mono", AndaleMono, monospace;
-  color: blue;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }

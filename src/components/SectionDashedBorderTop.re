@@ -57,6 +57,7 @@ let make = (
   ~orientation=Orientation.Left,
   ~borders=false,
   ~titleTextStyle=?,
+  ~theme,
   _children
 ) => {
   ...component,
@@ -72,18 +73,22 @@ let make = (
                     (text(titleString))
                   </h1>
                 </div>,
-                <div key="space" style=middleStyle />,
-                <div key="dash" style=otherBox>
-                  <div style=dashedLineStyle />
-                </div>,
+                theme === Theme.Retro ? <div key="space" style=middleStyle /> : <div/>,
+                theme === Theme.Retro ? 
+                  <div key="dash" style=otherBox>
+                    <div style=dashedLineStyle />
+                  </div>:
+                  <div/>,
               ]
               |> (orientation === Orientation.Right ? Belt.List.reverse : (a) => a)
               |> Belt.List.toArray
               |> ReasonReact.arrayToElement
           | None =>
-              <div style=otherBox>
-                <div style=dashedLineStyle />
-              </div>
+              theme === Theme.Retro ? 
+                <div style=otherBox>
+                  <div style=dashedLineStyle />
+                </div> :
+                <div/>
           }
         )
       </div>

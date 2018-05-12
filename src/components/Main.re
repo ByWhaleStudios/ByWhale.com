@@ -1,10 +1,19 @@
 let text = ReasonReact.stringToElement;
 
-let component = ReasonReact.statelessComponent("Main");
 
 [@bs.module] external ccc1 : string = "../../../../public/ClickCodeCreate1.png";
 [@bs.module] external ccc2 : string = "../../../../public/ClickCodeCreate2.png";
 [@bs.module] external ccc3 : string = "../../../../public/ClickCodeCreate3.png";
+
+
+
+type action =
+  | ChangeTheme(Theme.theme)
+;
+
+type state = {
+  theme: Theme.theme
+};
 
 let contentStyle =
   ReactDOMRe.Style.make(
@@ -43,20 +52,42 @@ let gridStyle =
     ()
   );
 
-let appStyle =
-  ReactDOMRe.Style.make(
-    ~position="relative",
-    ~width="100%",
-    ~height="100%",
-    ~maxWidth="100%",
-    ~paddingTop="0",
-    ~paddingBottom="0",
-    ~marginTop="0",
-    ~marginBottom="0",
-    ~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",
-    ~boxSizing="border-box",
-    ()
-  );
+
+let appStyle = (theme : Theme.theme) =>
+  switch(theme){
+  | Theme.Minimal =>
+      ReactDOMRe.Style.make(
+        ~position="relative",
+        ~width="100%",
+        ~height="100%",
+        ~maxWidth="100%",
+        ~paddingTop="0",
+        ~paddingBottom="0",
+        ~marginTop="0",
+        ~marginBottom="0",
+        ~boxSizing="border-box",
+        ~fontFamily="Trebuchet MS, Helvetica, sans-serif",
+        ()
+      );
+  | Theme.Retro =>
+      ReactDOMRe.Style.make(
+        ~position="relative",
+        ~width="100%",
+        ~height="100%",
+        ~maxWidth="100%",
+        ~paddingTop="0",
+        ~paddingBottom="0",
+        ~marginTop="0",
+        ~marginBottom="0",
+        ~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",
+        ~boxSizing="border-box",
+        ~backgroundColor="#fefcf5",
+        ~color="blue",
+        ~fontFamily="Andale Mono, AndaleMono, monospace",
+        ()
+      );
+  };
+  
 
 let flex =
   ReactDOMRe.Style.make(
@@ -189,23 +220,51 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
   }
 ];
 
+
+
+let component = ReasonReact.reducerComponent("Main");
+
 let make = (_children) => {
   ...component,
-  render: _self =>
+  initialState: () => { theme: Retro },
+  reducer: (action, state: state) =>
+    switch action {
+    | ChangeTheme(theme) => ReasonReact.Update({ ...state,  theme })
+    },
+  render: self =>
     <div>
-      <div style=appStyle>
+      <div style=appStyle(self.state.theme)>
+        <select
+          onChange=(
+            (event) =>
+              event
+              |> ReactEventRe.Form.target
+              |> ReactDOMRe.domElementToObj
+              |> (obj) => obj##value
+              |> Theme.stringToTheme
+              |> (theme) => ChangeTheme(theme)
+              |> self.send
+          )
+        >
+          (
+            Theme.allThemes
+            |> Belt.List.map(_, (theme) => <option value=Theme.themeToString(theme)>(text(Theme.themeToString(theme)))</option>)
+            |> Belt.List.toArray
+            |> ReasonReact.arrayToElement
+          )
+        </select>
         <div style=byWhaleBox>
           <h1 className="h1" style=byWhaleTitleStyle>
             (text("bywhale."))
           </h1>
         </div>
         <div style=gridStyle>
-          <SectionDashed orientation=Orientation.Left title="1.News">
+          <SectionDashed orientation=Orientation.Left theme=self.state.theme title="1.News">
             <p style=contentStyle>
               (text("bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"))
             </p>
           </SectionDashed>
-          <SectionDashed orientation=Orientation.Right title="2.Team">
+          <SectionDashed orientation=Orientation.Right theme=self.state.theme title="2.Team">
             <Row>
               <Col md=3>
                 <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
@@ -217,19 +276,21 @@ let make = (_children) => {
                 </div>
               </Col>
               <Col md=6>
-                <p style=contentStyle>
-                  (text("Lama: Greg I need a little change."))
-                  <br />
-                  (text("Greg: Ughhh sure.  Whats up?"))
-                  <br />
-                  (text("Lama: Make the logo 5 points bigger."))
-                  <br />
-                  (text("Greg: Wait what?  I don't understand."))
-                  <br />
-                  (text("Lama: What don't you understand."))
-                  <br />
-                  (text("Greg: What the hell is a point?"))
-                </p>
+                <div style=flexCenter>
+                  <p style=contentStyle>
+                    (text("Lama: Greg I need a little change."))
+                    <br />
+                    (text("Greg: Ughhh sure.  Whats up?"))
+                    <br />
+                    (text("Lama: Make the logo 5 points bigger."))
+                    <br />
+                    (text("Greg: Wait what?  I don't understand."))
+                    <br />
+                    (text("Lama: What don't you understand."))
+                    <br />
+                    (text("Greg: What the hell is a point?"))
+                  </p>
+                </div>
               </Col>
               <Col md=3>
                 <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
@@ -242,7 +303,7 @@ let make = (_children) => {
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed orientation=Orientation.Left title="3.Work">
+          <SectionDashed orientation=Orientation.Left theme=self.state.theme title="3.Work">
             <Row>
               <Col md=5>
                 <div style=centeredContent>
@@ -260,7 +321,7 @@ let make = (_children) => {
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed>
+          <SectionDashed theme=self.state.theme>
             <Row>
               <Col md=7>
                 <BlueWhaleCarousel items=items/>
@@ -282,7 +343,7 @@ let make = (_children) => {
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed title="4.Services">
+          <SectionDashed title="4.Services" theme=self.state.theme>
             <Row>
               <Col md=3>
                 <div>(text("Art Direction"))</div>
@@ -318,7 +379,7 @@ let make = (_children) => {
               </Col>
             </Row>
           </SectionDashed>
-          <SectionDashed orientation=Orientation.Left>
+          <SectionDashed orientation=Orientation.Left theme=self.state.theme>
             <Row style=lastSectionStyle>
               <Col md=6>
                 <h2 style=titleStyle className="h2">
