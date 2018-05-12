@@ -350,7 +350,7 @@ let make = (_children) => {
                   </a>
                   <br/>
                   <a href="https://www.linkedin.com/company/bywhale/" className="a">
-                    (text("Linkedn"))
+                    (text("Linkedin"))
                   </a>
                   <br/>
                   <a href="https://www.instagram.com/bywhale.nyc" className="a">
