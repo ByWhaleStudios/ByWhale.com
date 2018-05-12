@@ -356,6 +356,10 @@ let make = (_children) => {
                   <a href="https://www.instagram.com/bywhale.nyc" className="a">
                     (text("Instagram"))
                   </a>
+                  <br/>
+                  <a href="https://github.com/ByWhaleStudios" className="a">
+                    (text("Github"))
+                  </a>
                 </p>
               </Col>
             </Row>
