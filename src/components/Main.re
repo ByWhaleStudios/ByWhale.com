@@ -260,25 +260,27 @@ let make = (_children) => {
     <div>
       <div style=rootStyle(self.state.theme)>
         <div style=appStyle(self.state.theme)>
-          <select
-            onChange=(
-              (event) =>
-                event
-                |> ReactEventRe.Form.target
-                |> ReactDOMRe.domElementToObj
-                |> (obj) => obj##value
-                |> Theme.stringToTheme
-                |> (theme) => ChangeTheme(theme)
-                |> self.send
-            )
-          >
-            (
-              Theme.allThemes
-              |> Belt.List.map(_, (theme) => <option value=Theme.themeToString(theme)>(text(Theme.themeToString(theme)))</option>)
-              |> Belt.List.toArray
-              |> ReasonReact.arrayToElement
-            )
-          </select>
+          /*
+            <select
+              onChange=(
+                (event) =>
+                  event
+                  |> ReactEventRe.Form.target
+                  |> ReactDOMRe.domElementToObj
+                  |> (obj) => obj##value
+                  |> Theme.stringToTheme
+                  |> (theme) => ChangeTheme(theme)
+                  |> self.send
+              )
+            >
+              (
+                Theme.allThemes
+                |> Belt.List.map(_, (theme) => <option value=Theme.themeToString(theme)>(text(Theme.themeToString(theme)))</option>)
+                |> Belt.List.toArray
+                |> ReasonReact.arrayToElement
+              )
+            </select>
+          */
           <div style=byWhaleBox(self.state.theme)>
             <h1 className="h1" style=byWhaleTitleStyle>
               (text("bywhale."))
