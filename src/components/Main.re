@@ -22,7 +22,6 @@ let contentStyle =
   );
 
 let dashWidth = 5;
-let backgroundColor = "#fefcf5";
 
 let titleStyle =
   ReactDOMRe.Style.make(
@@ -81,7 +80,7 @@ let appStyle = (theme : Theme.theme) =>
         ~marginBottom="0",
         ~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",
         ~boxSizing="border-box",
-        ~backgroundColor="#fefcf5",
+        
         ~color="blue",
         ~fontFamily="Andale Mono, AndaleMono, monospace",
         ()
@@ -120,15 +119,28 @@ let fullWidthImageStyle =
     ()
   );
 
-let byWhaleBox =
-  ReactDOMRe.Style.make(
-    ~position="absolute",
-    ~top="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
-    ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
-    ~paddingLeft=".2em",
-    ~backgroundColor=backgroundColor,
-    ()
-  );
+let byWhaleBox = (theme) =>
+  switch(theme){
+  | Theme.Minimal =>
+      ReactDOMRe.Style.make(
+        ~position="absolute",
+        ~color="blue",
+        ~top="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+        ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+        ~paddingLeft=".2em",
+        ()
+      )
+  | Theme.Retro =>
+      ReactDOMRe.Style.make(
+        ~position="absolute",
+        ~color="blue",
+        ~top="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+        ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+        ~paddingLeft=".2em",
+        ~backgroundColor="#fefcf5",
+        ()
+      )
+  };
 
 let envelopeStyle =
   ReactDOMRe.Style.make(
@@ -175,6 +187,21 @@ let lastSectionStyle =
     ()
   );
 
+let rootStyle = (theme) =>
+  switch(theme){
+  | Theme.Minimal =>
+      ReactDOMRe.Style.make(
+        ~padding="1em",
+        ()
+      )
+  | Theme.Retro =>
+      ReactDOMRe.Style.make(
+        ~padding="1em",
+        ~backgroundColor="#fefcf5",
+        ()
+      )
+};
+
 let module Document = {
   [@bs.val] [@bs.scope ("window")] external scrollTo : (int, int) => unit = "scrollTo";
 };
@@ -220,8 +247,6 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
   }
 ];
 
-
-
 let component = ReasonReact.reducerComponent("Main");
 
 let make = (_children) => {
@@ -232,7 +257,7 @@ let make = (_children) => {
     | ChangeTheme(theme) => ReasonReact.Update({ ...state,  theme })
     },
   render: self =>
-    <div>
+    <div style=rootStyle(self.state.theme)>
       <div style=appStyle(self.state.theme)>
         <select
           onChange=(
@@ -253,7 +278,7 @@ let make = (_children) => {
             |> ReasonReact.arrayToElement
           )
         </select>
-        <div style=byWhaleBox>
+        <div style=byWhaleBox(self.state.theme)>
           <h1 className="h1" style=byWhaleTitleStyle>
             (text("bywhale."))
           </h1>

@@ -3,8 +3,6 @@ body {
   
 }
 #root{
-  padding: 1em;
-  font-family: "Andale Mono", AndaleMono, monospace;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
