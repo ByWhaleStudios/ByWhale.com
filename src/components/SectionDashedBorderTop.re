@@ -5,8 +5,12 @@ let component = ReasonReact.statelessComponent("SectionDashedBorderTop");
 let dashedLineStyle =
   ReactDOMRe.Style.make(
     ~display="inline-block",
-    ~borderBottom="dashed 5px blue",
-    ~height="100%",
+    /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
+    ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%)",
+    ~backgroundPosition="left top, left bottom, left top, right top",
+    ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
+    ~backgroundSize="20px 5px, 20px 5px, 5px 20px, 5px 20px",
+    ~height="5px",
     ~width="100%",
     ~overflow="auto",
     ~padding="0",
