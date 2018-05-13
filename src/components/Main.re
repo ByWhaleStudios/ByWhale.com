@@ -334,7 +334,7 @@ let make = (~theme, _children) => {
                   </div>
                   <div style=flexCenter>
                     <div style=jobTitleStyle>
-                      (text("Gregory Thopson"))
+                      (text("Gregory Thompson"))
                       <br/>
                       (text("Software Developer, Co-Founder"))
                       <br/>

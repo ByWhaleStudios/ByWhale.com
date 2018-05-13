@@ -13,7 +13,7 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     const markup = renderToString(
-      <App title="bywhale." initialUrl={req.url} />
+      <App title="bywhale." initialUrl={req.url} server/>
     );
     res.send(
       `<!doctype html>
