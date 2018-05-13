@@ -84,7 +84,7 @@ let appStyle = (theme : Theme.theme) =>
         ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%)",
         ~backgroundPosition="left top, left bottom, left top, right top",
         ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
-        ~backgroundSize="20px 5px, 20px 5px, 5px 20px, 5px 20px",
+        ~backgroundSize="15px 5px, 15px 5px, 5px 15px, 5px 15px",
 
         ~boxSizing="border-box",
         ~color="blue",
@@ -282,9 +282,9 @@ type contentBlock = {
   follow: contentType,
 };
 
-let contentBlock = {
+let contentBlockFn = (theme) => {
   news: {
-    title: "News",
+    title: theme === Theme.Retro ? "1.News" : "News",
     content: [
       [
         "bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"
@@ -292,7 +292,7 @@ let contentBlock = {
     ],
   },
   team: {
-    title: "Team",
+    title: theme === Theme.Retro ? "2.Team" : "Team",
     content: [
       [
         "Lama: Greg I need a little change.",
@@ -305,7 +305,7 @@ let contentBlock = {
     ]
   },
   work: {
-    title: "Work",
+    title: theme === Theme.Retro ? "3.Work" : "Work",
     content: [
       [
         "Click Code Create",
@@ -318,7 +318,7 @@ let contentBlock = {
     ]
   },
   services: {
-    title: "Services",
+    title: theme === Theme.Retro ? "4.Services" : "Services",
     content: [
       [
         "Art Direction",
@@ -355,13 +355,13 @@ let contentBlock = {
     ]
   },
   about: {
-    title: "About",
+    title: theme === Theme.Retro ? "5.About" : "About",
     content: [
       ["bywhale. is a creative and technology studio based in New York City."]
     ]
   },
   address: {
-    title: "Address",
+    title: theme === Theme.Retro ? "6.Address" : "Address",
     content: [
       [
         "68 Jay Street",
@@ -371,7 +371,7 @@ let contentBlock = {
     ]
   },
   follow: {
-    title: "Follow",
+    title: theme === Theme.Retro ? "7.Follow" : "Follow",
     content: [
       [
         "Medium",
@@ -383,18 +383,19 @@ let contentBlock = {
   }
 };
 
-let make = (_children) => {
+let make = (~theme, _children) => {
   ...component,
-  initialState: () => { theme: Retro },
+  initialState: () => { theme: theme },
   reducer: (action, state: state) =>
     switch action {
     | ChangeTheme(theme) => ReasonReact.Update({ ...state,  theme })
     },
-  render: self =>
+  render: self => {
+    let contentBlock = contentBlockFn(self.state.theme);
     <div>
       <div style=rootStyle(self.state.theme)>
         <div style=appStyle(self.state.theme)>
-          
+          /*
             <select
               onChange=(
                 (event) =>
@@ -414,13 +415,14 @@ let make = (_children) => {
                 |> ReasonReact.arrayToElement
               )
             </select>
+          */
           <div style=byWhaleBox(self.state.theme)>
             <h1 className="h1" style=byWhaleTitleStyle>
               (text("bywhale."))
             </h1>
           </div>
           <div style=gridStyle>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=("1." ++ contentBlock.news.title)>
+            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.news.title)>
               <p style=contentStyle>
                 (
                   contentBlock.news.content
@@ -432,7 +434,7 @@ let make = (_children) => {
                 )
               </p>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Right theme=self.state.theme title=("2." ++ contentBlock.team.title)>
+            <SectionDashed orientation=Orientation.Right theme=self.state.theme title=(contentBlock.team.title)>
               <Row>
                 <Col md=3>
                   <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
@@ -466,7 +468,7 @@ let make = (_children) => {
                 </Col>
               </Row>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=("3." ++ contentBlock.work.title)>
+            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.work.title)>
               <Row>
                 <Col md=5>
                   <div style=centeredContent>
@@ -538,7 +540,7 @@ let make = (_children) => {
                 </Col>
               </Row>
             </SectionDashed>
-            <SectionDashed title=("4." ++ contentBlock.services.title) theme=self.state.theme>
+            <SectionDashed title=(contentBlock.services.title) theme=self.state.theme>
               <Row>
                 <Col md=3>
                   (
@@ -578,7 +580,7 @@ let make = (_children) => {
               <Row style=lastSectionStyle>
                 <Col md=6>
                   <h2 style=titleStyle className="h2">
-                    (text("5." ++ contentBlock.about.title))
+                    (text(contentBlock.about.title))
                   </h2>
                   <p style=contentStyle>
                     (
@@ -593,7 +595,7 @@ let make = (_children) => {
                 </Col>
                 <Col md=3>
                   <h2 style=titleStyle className="h2">
-                    (text("6." ++ contentBlock.address.title))
+                    (text(contentBlock.address.title))
                   </h2>
                   <p style=contentStyle>
                     (
@@ -606,7 +608,7 @@ let make = (_children) => {
                 </Col>
                 <Col md=3>
                   <h2 style=titleStyle className="h2">
-                    (text("7." ++ contentBlock.follow.title))
+                    (text(contentBlock.follow.title))
                   </h2>
                   <p style=contentStyle>
                     <a href="https://medium.com/@bywhale." className="a">
@@ -647,5 +649,6 @@ let make = (_children) => {
         </div>
       </div>
     </div>
+  }
 };
 
