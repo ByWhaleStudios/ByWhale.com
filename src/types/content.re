@@ -15,10 +15,10 @@ type contentBlock = {
 
 let contentBlockFn = (theme) => {
   news: {
-    title: theme === Theme.Retro ? "1.News" : "News",
+    title: theme === Theme.Retro ? "5.News" : "News",
     content: [
       [
-        "bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"
+        "bywhale. has recently partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"
       ],
     ],
   },
@@ -31,11 +31,11 @@ let contentBlockFn = (theme) => {
     content: [
       [
         "Click Code Create",
-        "Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding.",
+        "Brochure design and identity for code_U coding program.",
       ],
       [
-        "Illume Positive reminder app",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.",
+        "illume",
+        "Mobile app for moodlifting.",
       ]
     ]
   },
@@ -72,7 +72,7 @@ let contentBlockFn = (theme) => {
     ]
   },
   about: {
-    title: theme === Theme.Retro ? "5.About" : "About",
+    title: theme === Theme.Retro ? "1.About" : "About",
     content: [
       ["bywhale. is a creative and technology studio based in New York City providing communication, design, technology and data across multiple platforms."]
     ]

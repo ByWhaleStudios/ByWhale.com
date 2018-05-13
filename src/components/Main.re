@@ -5,8 +5,7 @@ let text = ReasonReact.stringToElement;
 [@bs.module] external ccc2 : string = "../../../../public/ClickCodeCreate2.png";
 [@bs.module] external ccc3 : string = "../../../../public/ClickCodeCreate3.png";
 [@bs.module] external lamaAndGregGif : string = "../../../../public/LamaAndGreg.gif";
-
-
+[@bs.module] external illumeImage : string = "../../../../public/illumeImage.png";
 
 type action =
   | ChangeTheme(Theme.theme)
@@ -112,11 +111,9 @@ let flexCenter =
     ()
   );
 
-let flexStart =
+let styleDownloadButton =
   ReactDOMRe.Style.make(
-    ~display="flex",
-    ~alignItems="center",
-    ~justifyContent="flex-start",
+    ~marginBottom=".5em",
     ()
   );
 
@@ -154,6 +151,7 @@ let byWhaleBox = (theme) =>
       ReactDOMRe.Style.make(
         ~position="absolute",
         ~color="blue",
+        ~paddingTop=".12em",
         ~top="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
         ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
         ~paddingLeft=".2em",
@@ -246,25 +244,6 @@ let module Document = {
 let scrollToTop = () =>
   Document.scrollTo(0, 0);
 
-
-let items : list(BlueWhaleCarousel.caroselItem) = [
-  {
-    src: "http://www.placekitten.com/400/400",
-    altText: "Slide 1",
-    caption: "Slide 1"
-  },
-  {
-    src: "http://www.placekitten.com/400/400",
-    altText: "Slide 2",
-    caption: "Slide 2"
-  },
-  {
-    src: "http://www.placekitten.com/400/400",
-    altText: "Slide 3",
-    caption: "Slide 3"
-  }
-];
-
 let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
   {
     src: ccc1,
@@ -324,10 +303,10 @@ let make = (~theme, _children) => {
             </h1>
           </div>
           <div style=gridStyle>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.news.title)>
+            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.about.title)>
               <p style=contentStyle>
                 (
-                  contentBlock.news.content
+                  contentBlock.about.content
                   |> Utils.List.getFromStringListList(_, 0, 0)
                   |> text
                 )
@@ -349,7 +328,7 @@ let make = (~theme, _children) => {
                       <br/>
                       <a style=emailMeStyle className="a" href="mailto:greg@bywhale.com">
                         <FaEnvelope style=envelopeStyle/>
-                        (text("   EMAIL LAMA"))
+                        (text("   email lama"))
                       </a>
                     </div>
                   </div>
@@ -361,7 +340,7 @@ let make = (~theme, _children) => {
                       <br/>
                       <a style=emailMeStyle className="a" href="mailto:lama@bywhale.com">
                         <FaEnvelope style=envelopeStyle/>
-                        (text("   EMAIL GREG"))
+                        (text("   email greg"))
                       </a>
                     </div>
                   </div>
@@ -370,37 +349,6 @@ let make = (~theme, _children) => {
             </SectionDashed>
             <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.work.title)>
               <Row>
-                <Col md=5>
-                  <div style=centeredContent>
-                    <div>
-                      <h3 className="h3">
-                        (
-                          contentBlock.work.content
-                          |> Utils.List.getFromStringListList(_, 0, 0)
-                          |> text
-                        )
-                      </h3>
-                      <br/>
-                      <p style=contentStyle>
-                        (
-                          contentBlock.work.content
-                          |> Utils.List.getFromStringListList(_, 0, 1)
-                          |> text
-                        )
-                      </p>
-                    </div>
-                  </div>
-                </Col>
-                <Col md=7>
-                  <BlueWhaleCarousel items=clickCodeCreateCarouselItems/>
-                </Col>
-              </Row>
-            </SectionDashed>
-            <SectionDashed theme=self.state.theme>
-              <Row>
-                <Col md=7>
-                  <BlueWhaleCarousel items=items/>
-                </Col>
                 <Col md=5>
                   <div style=centeredContent>
                     <div>
@@ -419,10 +367,41 @@ let make = (~theme, _children) => {
                           |> text
                         )
                       </p>
-                      <div style=flexStart>
+                      <div style=styleDownloadButton>
                         <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
+                      </div>
+                      <div style=styleDownloadButton>
                         <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
                       </div>
+                    </div>
+                  </div>
+                </Col>
+                <Col md=7>
+                  <img src=illumeImage style=fullWidthImageStyle />
+                </Col>
+              </Row>
+              <Row>
+                <Col md=7>
+                  <BlueWhaleCarousel items=clickCodeCreateCarouselItems/>
+                </Col>
+                <Col md=5>
+                  <div style=centeredContent>
+                    <div>
+                      <h3 className="h3">
+                        (
+                          contentBlock.work.content
+                          |> Utils.List.getFromStringListList(_, 0, 0)
+                          |> text
+                        )
+                      </h3>
+                      <br/>
+                      <p style=contentStyle>
+                        (
+                          contentBlock.work.content
+                          |> Utils.List.getFromStringListList(_, 0, 1)
+                          |> text
+                        )
+                      </p>
                     </div>
                   </div>
                 </Col>
@@ -468,11 +447,11 @@ let make = (~theme, _children) => {
               <Row style=lastSectionStyle>
                 <Col md=6>
                   <h2 style=titleStyle className="h2">
-                    (text(contentBlock.about.title))
+                    (text(contentBlock.news.title))
                   </h2>
                   <p style=contentStyle>
                     (
-                      contentBlock.about.content
+                      contentBlock.news.content
                       |> Utils.List.getFromStringListList(_, 0, 0)
                       |> text
                     )
