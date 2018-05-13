@@ -226,9 +226,15 @@ let rootStyle = (theme) =>
       )
 };
 
+let jobTitleStyle =
+  ReactDOMRe.Style.make(
+    ~fontSize=".8em",
+    ()
+  );
+
 let emailMeStyle =
   ReactDOMRe.Style.make(
-    ~fontSize=".7em",
+    ~fontSize=".6em",
     ()
   );
 
@@ -336,7 +342,7 @@ let make = (~theme, _children) => {
               <Row>
                 <div style=emailSpaceAround>
                   <div style=flexCenter>
-                    <div>
+                    <div style=jobTitleStyle>
                       (text("Lama Younes"))
                       <br/>
                       (text("Graphic Designer, Co-Founder"))
@@ -348,7 +354,7 @@ let make = (~theme, _children) => {
                     </div>
                   </div>
                   <div style=flexCenter>
-                    <div>
+                    <div style=jobTitleStyle>
                       (text("Gregory Thopson"))
                       <br/>
                       (text("Software Developer, Co-Founder"))

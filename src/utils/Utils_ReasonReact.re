@@ -8,13 +8,13 @@ let listToReactArray = (list) =>
 let concatStringWithBr = (listString) =>
   listString
   |> Belt.List.reduce(_, [], (memo, ele) =>
-       memo @ (Belt.List.length(memo) === 0 ? [] : [<br/>]) @
-       [<span>(text(ele))</span>])
+       memo @ (Belt.List.length(memo) === 0 ? [] : [<br key=(ele ++ "br")/>]) @
+       [<span key=ele>(text(ele))</span>])
   |> listToReactArray;
 
 let concatLinkWithBr = (listString, textToHrefFunction) =>
   listString
   |> Belt.List.reduce(_, [], (memo, ele) =>
-       memo @ (Belt.List.length(memo) === 0 ? [] : [<br/>]) @
-       [<a href=(textToHrefFunction(ele)) className="a">(text(ele))</a>])
+       memo @ (Belt.List.length(memo) === 0 ? [] : [<br key=(ele ++ "br")/>]) @
+       [<a key=ele href=(textToHrefFunction(ele)) className="a">(text(ele))</a>])
   |> listToReactArray;
