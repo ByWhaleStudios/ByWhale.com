@@ -235,6 +235,18 @@ let items : list(BlueWhaleCarousel.caroselItem) = [
   }
 ];
 
+let listToReactArray = (list) =>
+  list
+  |> Belt.List.toArray
+  |> ReasonReact.arrayToElement;
+
+let concatStringWithBr = (listString) =>
+  listString
+  |> Belt.List.reduce(_, [], (memo, ele) =>
+       memo @ (Belt.List.length(memo) === 0 ? [] : [<br/>]) @
+       [<span>(text(ele))</span>])
+  |> listToReactArray;
+
 let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
   {
     src: ccc1,
@@ -255,6 +267,122 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
 
 let component = ReasonReact.reducerComponent("Main");
 
+type contentType = {
+  title: string,
+  content: list(list(string)),
+};
+
+type contentBlock = {
+  news: contentType,
+  team:contentType,
+  work: contentType,
+  services:contentType,
+  about: contentType,
+  address: contentType,
+  follow: contentType,
+};
+
+let contentBlock = {
+  news: {
+    title: "News",
+    content: [
+      [
+        "bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"
+      ],
+    ],
+  },
+  team: {
+    title: "Team",
+    content: [
+      [
+        "Lama: Greg I need a little change.",
+        "Greg: Ughhh sure. Whats up?",
+        "Lama: Make the logo 5 points bigger.",
+        "Greg: Wait what? I don't understand.",
+        "Lama: What don't you understand.",
+        "Greg: What the hell is a point?"
+      ],
+    ]
+  },
+  work: {
+    title: "Work",
+    content: [
+      [
+        "Click Code Create",
+        "Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding.",
+      ],
+      [
+        "Illume Positive reminder app",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.",
+      ]
+    ]
+  },
+  services: {
+    title: "Services",
+    content: [
+      [
+        "Art Direction",
+        "Branding",
+        "Consultancy",
+        "Concept Development",
+        "Concept Development",
+        "Design",
+      ],
+      [
+        "Art Direction",
+        "Branding",
+        "Consultancy",
+        "Concept Development",
+        "Concept Development",
+        "Design",
+      ],
+      [
+        "Art Direction",
+        "Branding",
+        "Consultancy",
+        "Concept Development",
+        "Concept Development",
+        "Design",
+      ],
+      [
+        "Art Direction",
+        "Branding",
+        "Consultancy",
+        "Concept Development",
+        "Concept Development",
+        "Design",
+      ],
+    ]
+  },
+  about: {
+    title: "About",
+    content: [
+      ["bywhale. is a creative and technology studio based in New York City."]
+    ]
+  },
+  address: {
+    title: "Address",
+    content: [
+      [
+        "68 Jay Street",
+        "Suite 201",
+        "New York, NY 11201",
+      ]
+    ]
+  },
+  follow: {
+    title: "Follow",
+    content: [
+      [
+        "Medium",
+        "Linkedin",
+        "Instagram",
+        "Github",
+      ]
+    ]
+  }
+};
+
 let make = (_children) => {
   ...component,
   initialState: () => { theme: Retro },
@@ -266,7 +394,7 @@ let make = (_children) => {
     <div>
       <div style=rootStyle(self.state.theme)>
         <div style=appStyle(self.state.theme)>
-          /*
+          
             <select
               onChange=(
                 (event) =>
@@ -286,19 +414,25 @@ let make = (_children) => {
                 |> ReasonReact.arrayToElement
               )
             </select>
-          */
           <div style=byWhaleBox(self.state.theme)>
             <h1 className="h1" style=byWhaleTitleStyle>
               (text("bywhale."))
             </h1>
           </div>
           <div style=gridStyle>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title="1.News">
+            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=("1." ++ contentBlock.news.title)>
               <p style=contentStyle>
-                (text("bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"))
+                (
+                  contentBlock.news.content
+                  |> Belt.List.head
+                  |> Belt.Option.getWithDefault(_, [])
+                  |> Belt.List.head
+                  |> Belt.Option.getWithDefault(_, "")
+                  |> text
+                )
               </p>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Right theme=self.state.theme title="2.Team">
+            <SectionDashed orientation=Orientation.Right theme=self.state.theme title=("2." ++ contentBlock.team.title)>
               <Row>
                 <Col md=3>
                   <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
@@ -312,17 +446,12 @@ let make = (_children) => {
                 <Col md=6>
                   <div style=flexCenter>
                     <p style=contentStyle>
-                      (text("Lama: Greg I need a little change."))
-                      <br />
-                      (text("Greg: Ughhh sure.  Whats up?"))
-                      <br />
-                      (text("Lama: Make the logo 5 points bigger."))
-                      <br />
-                      (text("Greg: Wait what?  I don't understand."))
-                      <br />
-                      (text("Lama: What don't you understand."))
-                      <br />
-                      (text("Greg: What the hell is a point?"))
+                      (
+                        contentBlock.team.content
+                        |> Belt.List.head
+                        |> Belt.Option.getWithDefault(_, [])
+                        |> concatStringWithBr
+                      )
                     </p>
                   </div>
                 </Col>
@@ -337,15 +466,31 @@ let make = (_children) => {
                 </Col>
               </Row>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title="3.Work">
+            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=("3." ++ contentBlock.work.title)>
               <Row>
                 <Col md=5>
                   <div style=centeredContent>
                     <div>
-                      <h3 className="h3">(text("Click Code Create"))</h3>
+                      <h3 className="h3">
+                        (
+                          contentBlock.work.content
+                          |> Belt.List.get(_, 0)
+                          |> Belt.Option.getWithDefault(_, [])
+                          |> Belt.List.get(_, 0)
+                          |> Belt.Option.getWithDefault(_, "")
+                          |> text
+                        )
+                      </h3>
                       <br/>
                       <p style=contentStyle>
-                        (text("Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding."))
+                        (
+                          contentBlock.work.content
+                          |> Belt.List.get(_, 0)
+                          |> Belt.Option.getWithDefault(_, [])
+                          |> Belt.List.get(_, 1)
+                          |> Belt.Option.getWithDefault(_, "")
+                          |> text
+                        )
                       </p>
                     </div>
                   </div>
@@ -363,10 +508,26 @@ let make = (_children) => {
                 <Col md=5>
                   <div style=centeredContent>
                     <div>
-                      <h3 className="h3">(text("Illume Positive reminder app"))</h3>
+                      <h3 className="h3">
+                        (
+                          contentBlock.work.content
+                          |> Belt.List.get(_, 1)
+                          |> Belt.Option.getWithDefault(_, [])
+                          |> Belt.List.get(_, 0)
+                          |> Belt.Option.getWithDefault(_, "")
+                          |> text
+                        )
+                      </h3>
                       <br/>
                       <p style=contentStyle>
-                        (text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris."))
+                        (
+                          contentBlock.work.content
+                          |> Belt.List.get(_, 1)
+                          |> Belt.Option.getWithDefault(_, [])
+                          |> Belt.List.get(_, 1)
+                          |> Belt.Option.getWithDefault(_, "")
+                          |> text
+                        )
                       </p>
                       <div style=flexSpaceBetween>
                         <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
@@ -377,39 +538,39 @@ let make = (_children) => {
                 </Col>
               </Row>
             </SectionDashed>
-            <SectionDashed title="4.Services" theme=self.state.theme>
+            <SectionDashed title=("4." ++ contentBlock.services.title) theme=self.state.theme>
               <Row>
                 <Col md=3>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
+                  (
+                    contentBlock.services.content
+                    |> Belt.List.get(_, 0)
+                    |> Belt.Option.getWithDefault(_, [])
+                    |> concatStringWithBr
+                  )
                 </Col>
                 <Col md=3>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
+                  (
+                    contentBlock.services.content
+                    |> Belt.List.get(_, 1)
+                    |> Belt.Option.getWithDefault(_, [])
+                    |> concatStringWithBr
+                  )
                 </Col>
                 <Col md=3>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
+                  (
+                    contentBlock.services.content
+                    |> Belt.List.get(_, 2)
+                    |> Belt.Option.getWithDefault(_, [])
+                    |> concatStringWithBr
+                  )
                 </Col>
                 <Col md=3>
-                  <div>(text("Art Direction"))</div>
-                  <div>(text("Branding"))</div>
-                  <div>(text("Consultancy"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Concept Development"))</div>
-                  <div>(text("Design"))</div>
+                  (
+                    contentBlock.services.content
+                    |> Belt.List.get(_, 3)
+                    |> Belt.Option.getWithDefault(_, [])
+                    |> concatStringWithBr
+                  )
                 </Col>
               </Row>
             </SectionDashed>
@@ -417,27 +578,35 @@ let make = (_children) => {
               <Row style=lastSectionStyle>
                 <Col md=6>
                   <h2 style=titleStyle className="h2">
-                    (text("5.About"))
+                    (text("5." ++ contentBlock.about.title))
                   </h2>
                   <p style=contentStyle>
-                    (text("bywhale. is a creative and technology studio based in New York City."))
+                    (
+                      contentBlock.about.content
+                      |> Belt.List.head
+                      |> Belt.Option.getWithDefault(_, [])
+                      |> Belt.List.head
+                      |> Belt.Option.getWithDefault(_, "")
+                      |> text
+                    )
                   </p>
                 </Col>
                 <Col md=3>
                   <h2 style=titleStyle className="h2">
-                    (text("6.Address"))
+                    (text("6." ++ contentBlock.address.title))
                   </h2>
                   <p style=contentStyle>
-                    (text("68 Jay Street"))
-                    <br/>
-                    (text("Suite 201"))
-                    <br/>
-                    (text("New York, NY 11201"))
+                    (
+                      contentBlock.address.content
+                      |> Belt.List.head
+                      |> Belt.Option.getWithDefault(_, [])
+                      |> concatStringWithBr
+                    )
                   </p>
                 </Col>
                 <Col md=3>
                   <h2 style=titleStyle className="h2">
-                    (text("7.Follow"))
+                    (text("7." ++ contentBlock.follow.title))
                   </h2>
                   <p style=contentStyle>
                     <a href="https://medium.com/@bywhale." className="a">
