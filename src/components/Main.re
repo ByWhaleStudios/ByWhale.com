@@ -43,7 +43,7 @@ let byWhaleTitleStyle =
 let gridStyle =
   ReactDOMRe.Style.make(
     ~padding="0 8%",
-    ~marginTop="4em",
+    ~paddingTop="4em",
     ~margin="0",
     ~width="100%",
     ~height="100%",
@@ -75,6 +75,8 @@ let appStyle = (theme : Theme.theme) =>
         ~height="100%",
         ~maxWidth="100%",
         /*~padding=(dashWidth |> string_of_int),*/
+        ~paddingTop="0",
+        ~paddingBottom="0",
         ~marginTop="0",
         ~marginBottom="0",
 
@@ -198,11 +200,15 @@ let rootStyle = (theme) =>
   | Theme.Minimal =>
       ReactDOMRe.Style.make(
         ~padding="1em",
+        ~height="100%",
+        ~width="100%",
         ()
       )
   | Theme.Retro =>
       ReactDOMRe.Style.make(
         ~padding="1em",
+        ~height="100%",
+        ~width="100%",
         ~backgroundColor="#fefcf5",
         ()
       )
