@@ -78,7 +78,7 @@ let appStyle = (theme : Theme.theme) =>
         ~marginTop="0",
         ~marginBottom="0",
 
-        /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px transparent",*/
+        /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
         ~border="dashed 1px transparent",
 
         ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%)",
