@@ -120,8 +120,10 @@ let flexStart =
     ()
   );
 
-let flexSpaceAround =
+let emailSpaceAround =
   ReactDOMRe.Style.make(
+    ~textAlign="center",
+    ~margin="0 6%",
     ~width="100%",
     ~display="flex",
     ~alignItems="center",
@@ -223,6 +225,12 @@ let rootStyle = (theme) =>
         ()
       )
 };
+
+let emailMeStyle =
+  ReactDOMRe.Style.make(
+    ~fontSize=".7em",
+    ()
+  );
 
 let module Document = {
   [@bs.val] [@bs.scope ("window")] external scrollTo : (int, int) => unit = "scrollTo";
@@ -326,18 +334,30 @@ let make = (~theme, _children) => {
                 </Col>
               </Row>
               <Row>
-                <div style=flexSpaceAround>
+                <div style=emailSpaceAround>
                   <div style=flexCenter>
-                    <a className="a" href="mailto:greg@bywhale.com">
-                      <FaEnvelope style=envelopeStyle/>
-                      (text("   EMAIL GREG"))
-                    </a>
+                    <div>
+                      (text("Lama Younes"))
+                      <br/>
+                      (text("Graphic Designer, Co-Founder"))
+                      <br/>
+                      <a style=emailMeStyle className="a" href="mailto:greg@bywhale.com">
+                        <FaEnvelope style=envelopeStyle/>
+                        (text("   EMAIL LAMA"))
+                      </a>
+                    </div>
                   </div>
                   <div style=flexCenter>
-                    <a className="a" href="mailto:lama@bywhale.com">
-                      <FaEnvelope style=envelopeStyle/>
-                      (text("   EMAIL LAMA"))
-                    </a>
+                    <div>
+                      (text("Gregory Thopson"))
+                      <br/>
+                      (text("Software Developer, Co-Founder"))
+                      <br/>
+                      <a style=emailMeStyle className="a" href="mailto:lama@bywhale.com">
+                        <FaEnvelope style=envelopeStyle/>
+                        (text("   EMAIL GREG"))
+                      </a>
+                    </div>
                   </div>
                 </div>
               </Row>
