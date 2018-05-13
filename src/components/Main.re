@@ -363,7 +363,7 @@ let contentBlockFn = (theme) => {
   about: {
     title: theme === Theme.Retro ? "5.About" : "About",
     content: [
-      ["bywhale. is a creative and technology studio based in New York City."]
+      ["bywhale. is a creative and technology studio based in New York City providing communication, design, technology and data across multiple platforms."]
     ]
   },
   address: {
@@ -388,6 +388,15 @@ let contentBlockFn = (theme) => {
     ]
   }
 };
+
+let textSocialMediaToHref = (socialMediaText) =>
+  switch(socialMediaText){
+  | "Medium" => "https://medium.com/@bywhale."
+  | "Linkedin" => "https://www.linkedin.com/company/bywhale/"
+  | "Instagram" => "https://www.instagram.com/bywhale.nyc"
+  | "Github" => "https://github.com/ByWhaleStudios"
+  | _ => ""
+  };
 
 let make = (~theme, _children) => {
   ...component,
@@ -617,21 +626,15 @@ let make = (~theme, _children) => {
                     (text(contentBlock.follow.title))
                   </h2>
                   <p style=contentStyle>
-                    <a href="https://medium.com/@bywhale." className="a">
-                      (text("Medium"))
-                    </a>
-                    <br/>
-                    <a href="https://www.linkedin.com/company/bywhale/" className="a">
-                      (text("Linkedin"))
-                    </a>
-                    <br/>
-                    <a href="https://www.instagram.com/bywhale.nyc" className="a">
-                      (text("Instagram"))
-                    </a>
-                    <br/>
-                    <a href="https://github.com/ByWhaleStudios" className="a">
-                      (text("Github"))
-                    </a>
+                    (
+                      contentBlock.follow.content
+                      |> Belt.List.head
+                      |> Belt.Option.getWithDefault(_, [])
+                      |> Belt.List.reduce(_, [], (memo, ele) =>
+                           memo @ (Belt.List.length(memo) === 0 ? [] : [<br/>]) @
+                           [<a href=(textSocialMediaToHref(ele)) className="a">(text(ele))</a>])
+                      |> listToReactArray
+                    )
                   </p>
                 </Col>
               </Row>
