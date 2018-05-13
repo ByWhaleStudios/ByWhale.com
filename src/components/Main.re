@@ -4,7 +4,7 @@ let text = ReasonReact.stringToElement;
 [@bs.module] external ccc1 : string = "../../../../public/ClickCodeCreate1.png";
 [@bs.module] external ccc2 : string = "../../../../public/ClickCodeCreate2.png";
 [@bs.module] external ccc3 : string = "../../../../public/ClickCodeCreate3.png";
-[@bs.module] external lamaAndGregGif : string = "../../../../public/lama_and_greg.gif";
+[@bs.module] external lamaAndGregGif : string = "../../../../public/LamaAndGreg.gif";
 
 
 
