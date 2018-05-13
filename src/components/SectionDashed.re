@@ -16,16 +16,12 @@ let contentStyle =
 
 let make = (~title=?, ~orientation=?, ~theme, children) => {
   ...component,
-  render: _self => {
-
-    Js.log("theme = %j");
-    Js.log(theme);
+  render: _self =>
     <div style=sectionStyle>
       <div style=contentStyle>
         <SectionDashedBorderTop orientation=Belt.Option.getWithDefault(orientation, Orientation.Left) title=title theme=theme/>
       </div>
       (ReasonReact.createDomElement("div", ~props=Js.Obj.empty(), children))
 
-    </div>;
-  }
+    </div>
 };
