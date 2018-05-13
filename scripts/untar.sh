@@ -8,6 +8,7 @@ rm -rf /srv/www/bywhale.me/public && \ #remove pubic folder
 cd /srv/www/bywhale.me/ && \
 rm -rf last_version && \
 rm -rf main && \
+mkdir -p last_version && \
 tar zxvf package.tgz -C last_version && \
 mv last_version/build/* main/ # && \
 
