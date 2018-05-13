@@ -241,18 +241,6 @@ let items : list(BlueWhaleCarousel.caroselItem) = [
   }
 ];
 
-let listToReactArray = (list) =>
-  list
-  |> Belt.List.toArray
-  |> ReasonReact.arrayToElement;
-
-let concatStringWithBr = (listString) =>
-  listString
-  |> Belt.List.reduce(_, [], (memo, ele) =>
-       memo @ (Belt.List.length(memo) === 0 ? [] : [<br/>]) @
-       [<span>(text(ele))</span>])
-  |> listToReactArray;
-
 let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
   {
     src: ccc1,
@@ -273,131 +261,6 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
 
 let component = ReasonReact.reducerComponent("Main");
 
-type contentType = {
-  title: string,
-  content: list(list(string)),
-};
-
-type contentBlock = {
-  news: contentType,
-  team:contentType,
-  work: contentType,
-  services:contentType,
-  about: contentType,
-  address: contentType,
-  follow: contentType,
-};
-
-let contentBlockFn = (theme) => {
-  news: {
-    title: theme === Theme.Retro ? "1.News" : "News",
-    content: [
-      [
-        "bywhale. has a new home! We are now up and running in Dumbo. find us at 68 Jay Street, Brooklyn, NY, 11201. We are also happy to announce that we have partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"
-      ],
-    ],
-  },
-  team: {
-    title: theme === Theme.Retro ? "2.Team" : "Team",
-    content: [
-      [
-        "Lama: Greg I need a little change.",
-        "Greg: Ughhh sure. Whats up?",
-        "Lama: Make the logo 5 points bigger.",
-        "Greg: Wait what? I don't understand.",
-        "Lama: What don't you understand.",
-        "Greg: What the hell is a point?"
-      ],
-    ]
-  },
-  work: {
-    title: theme === Theme.Retro ? "3.Work" : "Work",
-    content: [
-      [
-        "Click Code Create",
-        "Brochure design and identity for a 10 week online coding course that helps students learn the principles of web development and coding.",
-      ],
-      [
-        "Illume Positive reminder app",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris.",
-      ]
-    ]
-  },
-  services: {
-    title: theme === Theme.Retro ? "4.Services" : "Services",
-    content: [
-      [
-        "Art Direction",
-        "Branding",
-        "Consultancy",
-        "Concept Development",
-        "Concept Development",
-        "Design",
-      ],
-      [
-        "Art Direction",
-        "Branding",
-        "Consultancy",
-        "Concept Development",
-        "Concept Development",
-        "Design",
-      ],
-      [
-        "Art Direction",
-        "Branding",
-        "Consultancy",
-        "Concept Development",
-        "Concept Development",
-        "Design",
-      ],
-      [
-        "Art Direction",
-        "Branding",
-        "Consultancy",
-        "Concept Development",
-        "Concept Development",
-        "Design",
-      ],
-    ]
-  },
-  about: {
-    title: theme === Theme.Retro ? "5.About" : "About",
-    content: [
-      ["bywhale. is a creative and technology studio based in New York City providing communication, design, technology and data across multiple platforms."]
-    ]
-  },
-  address: {
-    title: theme === Theme.Retro ? "6.Address" : "Address",
-    content: [
-      [
-        "68 Jay Street",
-        "Suite 201",
-        "New York, NY 11201",
-      ]
-    ]
-  },
-  follow: {
-    title: theme === Theme.Retro ? "7.Follow" : "Follow",
-    content: [
-      [
-        "Medium",
-        "Linkedin",
-        "Instagram",
-        "Github",
-      ]
-    ]
-  }
-};
-
-let textSocialMediaToHref = (socialMediaText) =>
-  switch(socialMediaText){
-  | "Medium" => "https://medium.com/@bywhale."
-  | "Linkedin" => "https://www.linkedin.com/company/bywhale/"
-  | "Instagram" => "https://www.instagram.com/bywhale.nyc"
-  | "Github" => "https://github.com/ByWhaleStudios"
-  | _ => ""
-  };
-
 let make = (~theme, _children) => {
   ...component,
   initialState: () => { theme: theme },
@@ -406,7 +269,7 @@ let make = (~theme, _children) => {
     | ChangeTheme(theme) => ReasonReact.Update({ ...state,  theme })
     },
   render: self => {
-    let contentBlock = contentBlockFn(self.state.theme);
+    let contentBlock = Content.contentBlockFn(self.state.theme);
     <div>
       <div style=rootStyle(self.state.theme)>
         <div style=appStyle(self.state.theme)>
@@ -441,10 +304,7 @@ let make = (~theme, _children) => {
               <p style=contentStyle>
                 (
                   contentBlock.news.content
-                  |> Belt.List.head
-                  |> Belt.Option.getWithDefault(_, [])
-                  |> Belt.List.head
-                  |> Belt.Option.getWithDefault(_, "")
+                  |> Utils.List.getFromStringListList(_, 0, 0)
                   |> text
                 )
               </p>
@@ -467,7 +327,7 @@ let make = (~theme, _children) => {
                         contentBlock.team.content
                         |> Belt.List.head
                         |> Belt.Option.getWithDefault(_, [])
-                        |> concatStringWithBr
+                        |> Utils.ReasonReact.concatStringWithBr
                       )
                     </p>
                   </div>
@@ -491,10 +351,7 @@ let make = (~theme, _children) => {
                       <h3 className="h3">
                         (
                           contentBlock.work.content
-                          |> Belt.List.get(_, 0)
-                          |> Belt.Option.getWithDefault(_, [])
-                          |> Belt.List.get(_, 0)
-                          |> Belt.Option.getWithDefault(_, "")
+                          |> Utils.List.getFromStringListList(_, 0, 0)
                           |> text
                         )
                       </h3>
@@ -502,10 +359,7 @@ let make = (~theme, _children) => {
                       <p style=contentStyle>
                         (
                           contentBlock.work.content
-                          |> Belt.List.get(_, 0)
-                          |> Belt.Option.getWithDefault(_, [])
-                          |> Belt.List.get(_, 1)
-                          |> Belt.Option.getWithDefault(_, "")
+                          |> Utils.List.getFromStringListList(_, 0, 1)
                           |> text
                         )
                       </p>
@@ -528,10 +382,7 @@ let make = (~theme, _children) => {
                       <h3 className="h3">
                         (
                           contentBlock.work.content
-                          |> Belt.List.get(_, 1)
-                          |> Belt.Option.getWithDefault(_, [])
-                          |> Belt.List.get(_, 0)
-                          |> Belt.Option.getWithDefault(_, "")
+                          |> Utils.List.getFromStringListList(_, 1, 0)
                           |> text
                         )
                       </h3>
@@ -539,10 +390,7 @@ let make = (~theme, _children) => {
                       <p style=contentStyle>
                         (
                           contentBlock.work.content
-                          |> Belt.List.get(_, 1)
-                          |> Belt.Option.getWithDefault(_, [])
-                          |> Belt.List.get(_, 1)
-                          |> Belt.Option.getWithDefault(_, "")
+                          |> Utils.List.getFromStringListList(_, 1, 1)
                           |> text
                         )
                       </p>
@@ -562,7 +410,7 @@ let make = (~theme, _children) => {
                     contentBlock.services.content
                     |> Belt.List.get(_, 0)
                     |> Belt.Option.getWithDefault(_, [])
-                    |> concatStringWithBr
+                    |> Utils.ReasonReact.concatStringWithBr
                   )
                 </Col>
                 <Col md=3>
@@ -570,7 +418,7 @@ let make = (~theme, _children) => {
                     contentBlock.services.content
                     |> Belt.List.get(_, 1)
                     |> Belt.Option.getWithDefault(_, [])
-                    |> concatStringWithBr
+                    |> Utils.ReasonReact.concatStringWithBr
                   )
                 </Col>
                 <Col md=3>
@@ -578,7 +426,7 @@ let make = (~theme, _children) => {
                     contentBlock.services.content
                     |> Belt.List.get(_, 2)
                     |> Belt.Option.getWithDefault(_, [])
-                    |> concatStringWithBr
+                    |> Utils.ReasonReact.concatStringWithBr
                   )
                 </Col>
                 <Col md=3>
@@ -586,7 +434,7 @@ let make = (~theme, _children) => {
                     contentBlock.services.content
                     |> Belt.List.get(_, 3)
                     |> Belt.Option.getWithDefault(_, [])
-                    |> concatStringWithBr
+                    |> Utils.ReasonReact.concatStringWithBr
                   )
                 </Col>
               </Row>
@@ -600,10 +448,7 @@ let make = (~theme, _children) => {
                   <p style=contentStyle>
                     (
                       contentBlock.about.content
-                      |> Belt.List.head
-                      |> Belt.Option.getWithDefault(_, [])
-                      |> Belt.List.head
-                      |> Belt.Option.getWithDefault(_, "")
+                      |> Utils.List.getFromStringListList(_, 0, 0)
                       |> text
                     )
                   </p>
@@ -617,7 +462,7 @@ let make = (~theme, _children) => {
                       contentBlock.address.content
                       |> Belt.List.head
                       |> Belt.Option.getWithDefault(_, [])
-                      |> concatStringWithBr
+                      |> Utils.ReasonReact.concatStringWithBr
                     )
                   </p>
                 </Col>
@@ -630,10 +475,7 @@ let make = (~theme, _children) => {
                       contentBlock.follow.content
                       |> Belt.List.head
                       |> Belt.Option.getWithDefault(_, [])
-                      |> Belt.List.reduce(_, [], (memo, ele) =>
-                           memo @ (Belt.List.length(memo) === 0 ? [] : [<br/>]) @
-                           [<a href=(textSocialMediaToHref(ele)) className="a">(text(ele))</a>])
-                      |> listToReactArray
+                      |> Utils.ReasonReact.concatLinkWithBr(_, Content.textSocialMediaToHref)
                     )
                   </p>
                 </Col>
