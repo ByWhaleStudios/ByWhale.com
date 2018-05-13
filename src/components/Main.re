@@ -4,6 +4,7 @@ let text = ReasonReact.stringToElement;
 [@bs.module] external ccc1 : string = "../../../../public/ClickCodeCreate1.png";
 [@bs.module] external ccc2 : string = "../../../../public/ClickCodeCreate2.png";
 [@bs.module] external ccc3 : string = "../../../../public/ClickCodeCreate3.png";
+[@bs.module] external lamaAndGregGif : string = "../../../../public/lama_and_greg.gif";
 
 
 
@@ -21,7 +22,7 @@ let contentStyle =
     ()
   );
 
-let dashWidth = 5;
+let dashWidth = 3;
 
 let titleStyle =
   ReactDOMRe.Style.make(
@@ -86,7 +87,7 @@ let appStyle = (theme : Theme.theme) =>
         ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%)",
         ~backgroundPosition="left top, left bottom, left top, right top",
         ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
-        ~backgroundSize="20px 5px, 20px 5px, 5px 20px, 5px 20px",
+        ~backgroundSize="20px 3px, 20px 3px, 3px 20px, 3px 20px",
 
         ~boxSizing="border-box",
         ~color="blue",
@@ -111,11 +112,20 @@ let flexCenter =
     ()
   );
 
-let flexSpaceBetween =
+let flexStart =
   ReactDOMRe.Style.make(
     ~display="flex",
     ~alignItems="center",
     ~justifyContent="flex-start",
+    ()
+  );
+
+let flexSpaceAround =
+  ReactDOMRe.Style.make(
+    ~width="100%",
+    ~display="flex",
+    ~alignItems="center",
+    ~justifyContent="space-around",
     ()
   );
   
@@ -311,36 +321,25 @@ let make = (~theme, _children) => {
             </SectionDashed>
             <SectionDashed orientation=Orientation.Right theme=self.state.theme title=(contentBlock.team.title)>
               <Row>
-                <Col md=3>
-                  <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
+                <Col md=12>
+                  <img src=lamaAndGregGif style=fullWidthImageStyle />
+                </Col>
+              </Row>
+              <Row>
+                <div style=flexSpaceAround>
                   <div style=flexCenter>
                     <a className="a" href="mailto:greg@bywhale.com">
                       <FaEnvelope style=envelopeStyle/>
                       (text("   EMAIL GREG"))
                     </a>
                   </div>
-                </Col>
-                <Col md=6>
-                  <div style=flexCenter>
-                    <p style=contentStyle>
-                      (
-                        contentBlock.team.content
-                        |> Belt.List.head
-                        |> Belt.Option.getWithDefault(_, [])
-                        |> Utils.ReasonReact.concatStringWithBr
-                      )
-                    </p>
-                  </div>
-                </Col>
-                <Col md=3>
-                  <img src="http://www.placekitten.com/300/400" style=fullWidthImageStyle />
                   <div style=flexCenter>
                     <a className="a" href="mailto:lama@bywhale.com">
                       <FaEnvelope style=envelopeStyle/>
                       (text("   EMAIL LAMA"))
                     </a>
                   </div>
-                </Col>
+                </div>
               </Row>
             </SectionDashed>
             <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.work.title)>
@@ -394,7 +393,7 @@ let make = (~theme, _children) => {
                           |> text
                         )
                       </p>
-                      <div style=flexSpaceBetween>
+                      <div style=flexStart>
                         <DownloadButton buttonText="Download IOS" href="https://itunes.apple.com/us/app/illume/id1363415324?mt=8&app=itunes&ign-mpt=uo%3D4"/>
                         <DownloadButton buttonText="Download Android" href="https://play.google.com/store/apps/details?id=com.illume.illume"/>
                       </div>

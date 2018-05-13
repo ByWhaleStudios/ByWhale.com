@@ -24,16 +24,7 @@ let contentBlockFn = (theme) => {
   },
   team: {
     title: theme === Theme.Retro ? "2.Team" : "Team",
-    content: [
-      [
-        "Lama: Greg I need a little change.",
-        "Greg: Ughhh sure. Whats up?",
-        "Lama: Make the logo 5 points bigger.",
-        "Greg: Wait what? I don't understand.",
-        "Lama: What don't you understand.",
-        "Greg: What the hell is a point?"
-      ],
-    ]
+    content: []
   },
   work: {
     title: theme === Theme.Retro ? "3.Work" : "Work",
