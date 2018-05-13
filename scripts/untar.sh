@@ -9,6 +9,7 @@ cd /srv/www/bywhale.me/ && \
 rm -rf last_version && \
 rm -rf main && \
 mkdir -p last_version && \
+mkdir -p main && \
 tar zxvf package.tgz -C last_version && \
 mv last_version/build/* main/ # && \
 
