@@ -83,10 +83,10 @@ let appStyle = (theme : Theme.theme) =>
         /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
         ~border="dashed 1px transparent",
 
-        ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 50%, transparent 50%, transparent 100%)",
+        ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%)",
         ~backgroundPosition="left top, left bottom, left top, right top",
         ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
-        ~backgroundSize="15px 5px, 15px 5px, 5px 15px, 5px 15px",
+        ~backgroundSize="20px 5px, 20px 5px, 5px 20px, 5px 20px",
 
         ~boxSizing="border-box",
         ~color="blue",
