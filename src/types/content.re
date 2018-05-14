@@ -30,13 +30,18 @@ let contentBlockFn = (theme) => {
     title: (theme === Theme.AtariBlue || theme === Theme.AtariBlack) ? "3.Work" : "Work",
     content: [
       [
+        "illume",
+        "Mobile app for moodlifting.",
+      ],
+      [
         "Click Code Create",
         "Brochure design and identity for code_U coding program.",
       ],
       [
-        "illume",
-        "Mobile app for moodlifting.",
-      ]
+        "bywhale. identity",
+        "website for bywhale. identity",
+      ],
+      
     ]
   },
   services: {

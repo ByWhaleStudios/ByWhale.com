@@ -7,6 +7,7 @@ let text = ReasonReact.stringToElement;
 [@bs.module] external lamaAndGregGif : string = "../../../../public/LamaAndGreg.gif";
 [@bs.module] external lamaAndGregBlackGif : string = "../../../../public/LamaAndGregBlack.gif";
 [@bs.module] external illumeImage : string = "../../../../public/illumeImage.png";
+[@bs.module] external byWhaleIdentityImage : string = "../../../../public/byWhaleIdentityImage.png";
 
 type action =
   | ChangeTheme(Theme.theme)
@@ -405,7 +406,7 @@ let make = (~theme, ~changeTheme, _children) => {
                       <h3 className="h3">
                         (
                           contentBlock.work.content
-                          |> Utils.List.getFromStringListList(_, 1, 0)
+                          |> Utils.List.getFromStringListList(_, 0, 0)
                           |> text
                         )
                       </h3>
@@ -413,7 +414,7 @@ let make = (~theme, ~changeTheme, _children) => {
                       <p style=contentStyle>
                         (
                           contentBlock.work.content
-                          |> Utils.List.getFromStringListList(_, 1, 1)
+                          |> Utils.List.getFromStringListList(_, 0, 1)
                           |> text
                         )
                       </p>
@@ -440,7 +441,7 @@ let make = (~theme, ~changeTheme, _children) => {
                       <h3 className="h3">
                         (
                           contentBlock.work.content
-                          |> Utils.List.getFromStringListList(_, 0, 0)
+                          |> Utils.List.getFromStringListList(_, 1, 0)
                           |> text
                         )
                       </h3>
@@ -448,12 +449,38 @@ let make = (~theme, ~changeTheme, _children) => {
                       <p style=contentStyle>
                         (
                           contentBlock.work.content
-                          |> Utils.List.getFromStringListList(_, 0, 1)
+                          |> Utils.List.getFromStringListList(_, 1, 1)
                           |> text
                         )
                       </p>
                     </div>
                   </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col md=5>
+                  <div style=centeredContent>
+                    <div>
+                      <h3 className="h3">
+                        (
+                          contentBlock.work.content
+                          |> Utils.List.getFromStringListList(_, 2, 0)
+                          |> text
+                        )
+                      </h3>
+                      <br/>
+                      <p style=contentStyle>
+                        (
+                          contentBlock.work.content
+                          |> Utils.List.getFromStringListList(_, 2, 1)
+                          |> text
+                        )
+                      </p>
+                    </div>
+                  </div>
+                </Col>
+                <Col md=7>
+                  <img src=byWhaleIdentityImage style=fullWidthImageStyle />
                 </Col>
               </Row>
             </SectionDashed>
