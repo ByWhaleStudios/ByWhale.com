@@ -2,21 +2,40 @@ let text = ReasonReact.stringToElement;
 
 let component = ReasonReact.statelessComponent("SectionDashedBorderTop");
 
-let dashedLineStyle =
-  ReactDOMRe.Style.make(
-    ~display="inline-block",
-    /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
-    ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%)",
-    ~backgroundPosition="left top, left bottom, left top, right top",
-    ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
-    ~backgroundSize="20px 3px, 20px 3px, 3px 20px, 3px 20px",
-    ~height="3px",
-    ~width="100%",
-    ~overflow="auto",
-    ~padding="0",
-    ~margin="0",
-    ()
-  );
+let dashedLineStyle = (theme) =>
+  switch(theme){
+  | Theme.AtariBlue =>
+      ReactDOMRe.Style.make(
+        ~display="inline-block",
+        /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
+        ~backgroundImage="repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to right, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, blue 0%, blue 75%, transparent 75%, transparent 100%)",
+        ~backgroundPosition="left top, left bottom, left top, right top",
+        ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
+        ~backgroundSize="20px 3px, 20px 3px, 3px 20px, 3px 20px",
+        ~height="3px",
+        ~width="100%",
+        ~overflow="auto",
+        ~padding="0",
+        ~margin="0",
+        ()
+      )
+  | Theme.AtariBlack =>
+      ReactDOMRe.Style.make(
+        ~display="inline-block",
+        /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
+        ~backgroundImage="repeating-linear-gradient(to right, white 0%, white 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to right, white 0%, white 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, white 0%, white 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, white 0%, white 75%, transparent 75%, transparent 100%)",
+        ~backgroundPosition="left top, left bottom, left top, right top",
+        ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
+        ~backgroundSize="20px 3px, 20px 3px, 3px 20px, 3px 20px",
+        ~height="3px",
+        ~width="100%",
+        ~overflow="auto",
+        ~padding="0",
+        ~margin="0",
+        ()
+      )
+  | _ => ReactDOMRe.Style.make(())
+  };
 
 let flex =
   ReactDOMRe.Style.make(
@@ -77,10 +96,10 @@ let make = (
                     (text(titleString))
                   </h1>
                 </div>,
-                theme === Theme.Retro ? <div key="space" style=middleStyle /> : <div/>,
-                theme === Theme.Retro ? 
+                (theme === Theme.AtariBlue || theme === Theme.AtariBlack) ? <div key="space" style=middleStyle /> : <div/>,
+                (theme === Theme.AtariBlue || theme === Theme.AtariBlack) ? 
                   <div key="dash" style=otherBox>
-                    <div style=dashedLineStyle />
+                    <div style=dashedLineStyle(theme) />
                   </div>:
                   <div/>,
               ]
@@ -88,9 +107,9 @@ let make = (
               |> Belt.List.toArray
               |> ReasonReact.arrayToElement
           | None =>
-              theme === Theme.Retro ? 
+              (theme === Theme.AtariBlue || theme === Theme.AtariBlack) ? 
                 <div style=otherBox>
-                  <div style=dashedLineStyle />
+                  <div style=dashedLineStyle(theme) />
                 </div> :
                 <div/>
           }

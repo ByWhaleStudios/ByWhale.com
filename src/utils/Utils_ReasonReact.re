@@ -12,9 +12,9 @@ let concatStringWithBr = (listString) =>
        [<span key=ele>(text(ele))</span>])
   |> listToReactArray;
 
-let concatLinkWithBr = (listString, textToHrefFunction) =>
+let concatLinkWithBr = (listString, theme, textToHrefFunction) =>
   listString
   |> Belt.List.reduce(_, [], (memo, ele) =>
        memo @ (Belt.List.length(memo) === 0 ? [] : [<br key=(ele ++ "br")/>]) @
-       [<a key=ele href=(textToHrefFunction(ele)) className="a">(text(ele))</a>])
+       [<A key=ele theme=theme href=(textToHrefFunction(ele)) className="a">(text(ele))</A>])
   |> listToReactArray;

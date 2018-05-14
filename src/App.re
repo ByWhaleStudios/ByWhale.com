@@ -28,10 +28,11 @@ let make = (~title, ~initialUrl, ~foundHash, ~server, _children) => {
     | (_, Some("#beta-crazy")) =>
         Theme.allThemes
         |> Belt.List.get(_, (self.state.tickCount mod Belt.List.length(Theme.allThemes)))
-        |> Belt.Option.getWithDefault(_, Theme.Retro)
+        |> Belt.Option.getWithDefault(_, Theme.AtariBlue)
         |> (theme) => <Main theme=theme />
     | (_, Some("#beta-minimal")) => <Main theme=Theme.Minimal />
-    | (_, Some(_)) => <Main theme=Theme.Retro />
+    | (_, Some("#beta-atari-black")) => <Main theme=Theme.AtariBlack />
+    | (_, Some(_)) => <Main theme=Theme.AtariBlue />
     | _ => <div />
     }
 };

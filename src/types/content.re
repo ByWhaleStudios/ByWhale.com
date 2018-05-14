@@ -15,7 +15,7 @@ type contentBlock = {
 
 let contentBlockFn = (theme) => {
   news: {
-    title: theme === Theme.Retro ? "5.News" : "News",
+    title: theme === Theme.AtariBlue ? "5.News" : "News",
     content: [
       [
         "bywhale. has recently partnered up with Real & Open and are working on an exciting technology product for educators. Stay tuned!"
@@ -23,11 +23,11 @@ let contentBlockFn = (theme) => {
     ],
   },
   team: {
-    title: theme === Theme.Retro ? "2.Team" : "Team",
+    title: theme === Theme.AtariBlue ? "2.Team" : "Team",
     content: []
   },
   work: {
-    title: theme === Theme.Retro ? "3.Work" : "Work",
+    title: theme === Theme.AtariBlue ? "3.Work" : "Work",
     content: [
       [
         "Click Code Create",
@@ -40,7 +40,7 @@ let contentBlockFn = (theme) => {
     ]
   },
   services: {
-    title: theme === Theme.Retro ? "4.Services" : "Services",
+    title: theme === Theme.AtariBlue ? "4.Services" : "Services",
     content: [
       [
         "Art Direction",
@@ -72,13 +72,13 @@ let contentBlockFn = (theme) => {
     ]
   },
   about: {
-    title: theme === Theme.Retro ? "1.About" : "About",
+    title: theme === Theme.AtariBlue ? "1.About" : "About",
     content: [
       ["bywhale. is a creative and technology studio based in New York City providing communication, design, technology and data across multiple platforms."]
     ]
   },
   address: {
-    title: theme === Theme.Retro ? "6.Address" : "Address",
+    title: theme === Theme.AtariBlue ? "6.Address" : "Address",
     content: [
       [
         "68 Jay Street",
@@ -88,7 +88,7 @@ let contentBlockFn = (theme) => {
     ]
   },
   follow: {
-    title: theme === Theme.Retro ? "7.Follow" : "Follow",
+    title: theme === Theme.AtariBlue ? "7.Follow" : "Follow",
     content: [
       [
         "Medium",

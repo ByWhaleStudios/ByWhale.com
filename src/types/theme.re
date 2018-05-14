@@ -1,19 +1,22 @@
 type theme =
-  | Retro
+  | AtariBlue
+  | AtariBlack
   | Minimal
 ;
 
-let allThemes = [Retro, Minimal];
+let allThemes = [AtariBlue, AtariBlack, Minimal];
 
 let themeToString = (theme) =>
   switch(theme){
-  | Retro => "Retro"
+  | AtariBlue => "AtariBlue"
+  | AtariBlack => "AtariBlack"
   | Minimal => "Minimal"
   };
 
 let stringToTheme = (theme) =>
   switch(theme){
-  | "Retro" => Retro
+  | "AtariBlue" => AtariBlue
+  | "AtariBlack" => AtariBlack
   | "Minimal" => Minimal
-  | _ => Minimal
+  | _ => AtariBlue
   };

@@ -21,6 +21,12 @@ let contentStyle =
     ()
   );
 
+let linkTheme =
+  ReactDOMRe.Style.make(
+    ~color="blue",
+    ()
+  );
+
 let dashWidth = 3;
 
 let titleStyle =
@@ -68,7 +74,7 @@ let appStyle = (theme : Theme.theme) =>
         ~fontFamily="Trebuchet MS, Helvetica, sans-serif",
         ()
       );
-  | Theme.Retro =>
+  | Theme.AtariBlue =>
       ReactDOMRe.Style.make(
         ~position="relative",
         ~width="100%",
@@ -90,6 +96,31 @@ let appStyle = (theme : Theme.theme) =>
 
         ~boxSizing="border-box",
         ~color="blue",
+        ~fontFamily="Andale Mono, AndaleMono, monospace",
+        ()
+      );
+  | Theme.AtariBlack =>
+      ReactDOMRe.Style.make(
+        ~position="relative",
+        ~width="100%",
+        ~height="100%",
+        ~maxWidth="100%",
+        /*~padding=(dashWidth |> string_of_int),*/
+        ~paddingTop="0",
+        ~paddingBottom="0",
+        ~marginTop="0",
+        ~marginBottom="0",
+
+        /*~border="dashed " ++ (dashWidth |> string_of_int) ++"px blue",*/
+        ~border="dashed 1px transparent",
+
+        ~backgroundImage="repeating-linear-gradient(to right, white 0%, white 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to right, white 0%, white 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, white 0%, white 75%, transparent 75%, transparent 100%), repeating-linear-gradient(to bottom, white 0%, white 75%, transparent 75%, transparent 100%)",
+        ~backgroundPosition="left top, left bottom, left top, right top",
+        ~backgroundRepeat="repeat-x, repeat-x, repeat-y, repeat-y",
+        ~backgroundSize="20px 3px, 20px 3px, 3px 20px, 3px 20px",
+
+        ~boxSizing="border-box",
+        ~color="white",
         ~fontFamily="Andale Mono, AndaleMono, monospace",
         ()
       );
@@ -147,7 +178,7 @@ let byWhaleBox = (theme) =>
         ~paddingLeft=".2em",
         ()
       )
-  | Theme.Retro =>
+  | Theme.AtariBlue =>
       ReactDOMRe.Style.make(
         ~position="absolute",
         ~color="blue",
@@ -156,6 +187,17 @@ let byWhaleBox = (theme) =>
         ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
         ~paddingLeft=".2em",
         ~backgroundColor="#fefcf5",
+        ()
+      )
+  | Theme.AtariBlack =>
+      ReactDOMRe.Style.make(
+        ~position="absolute",
+        ~color="white",
+        ~paddingTop=".12em",
+        ~top="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+        ~right="-" ++ ((dashWidth + 1) |> string_of_int) ++ "px",
+        ~paddingLeft=".2em",
+        ~backgroundColor="black",
         ()
       )
   };
@@ -214,12 +256,20 @@ let rootStyle = (theme) =>
         ~width="100%",
         ()
       )
-  | Theme.Retro =>
+  | Theme.AtariBlue =>
       ReactDOMRe.Style.make(
         ~padding="1em",
         ~height="100%",
         ~width="100%",
         ~backgroundColor="#fefcf5",
+        ()
+      )
+  | Theme.AtariBlack =>
+      ReactDOMRe.Style.make(
+        ~padding="1em",
+        ~height="100%",
+        ~width="100%",
+        ~backgroundColor="black",
         ()
       )
 };
@@ -321,10 +371,10 @@ let make = (~theme, _children) => {
                       <br/>
                       (text("Graphic Designer, Co-Founder"))
                       <br/>
-                      <a style=emailMeStyle className="a" href="mailto:greg@bywhale.com">
+                      <A theme=theme style=emailMeStyle className="a" href="mailto:greg@bywhale.com">
                         <FaEnvelope style=envelopeStyle/>
                         (text("   email lama"))
-                      </a>
+                      </A>
                     </div>
                   </div>
                   <div style=flexCenter>
@@ -333,10 +383,10 @@ let make = (~theme, _children) => {
                       <br/>
                       (text("Software Developer, Co-Founder"))
                       <br/>
-                      <a style=emailMeStyle className="a" href="mailto:lama@bywhale.com">
+                      <A theme=theme style=emailMeStyle className="a" href="mailto:lama@bywhale.com">
                         <FaEnvelope style=envelopeStyle/>
                         (text("   email greg"))
-                      </a>
+                      </A>
                     </div>
                   </div>
                 </div>
@@ -474,7 +524,7 @@ let make = (~theme, _children) => {
                       contentBlock.follow.content
                       |> Belt.List.head
                       |> Belt.Option.getWithDefault(_, [])
-                      |> Utils.ReasonReact.concatLinkWithBr(_, Content.textSocialMediaToHref)
+                      |> Utils.ReasonReact.concatLinkWithBr(_, theme, Content.textSocialMediaToHref)
                     )
                   </p>
                 </Col>
@@ -489,9 +539,9 @@ let make = (~theme, _children) => {
               </Col>
               <Col md=3>
                 <div style=flexHorizontalEnd>
-                  <a className="a" onClick=((_) => scrollToTop()) href="javascript:void(0)">
+                  <A className="a" theme=theme onClick=((_) => scrollToTop()) href="javascript:void(0)">
                     (text("back to top"))
-                  </a>
+                  </A>
                 </div>
               </Col>
             </Row>
