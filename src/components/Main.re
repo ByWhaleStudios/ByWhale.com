@@ -262,20 +262,15 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
   }
 ];
 
-let component = ReasonReact.reducerComponent("Main");
+let component = ReasonReact.statelessComponent("Main");
 
 let make = (~theme, _children) => {
   ...component,
-  initialState: () => { theme: theme },
-  reducer: (action, state: state) =>
-    switch action {
-    | ChangeTheme(theme) => ReasonReact.Update({ ...state,  theme })
-    },
   render: self => {
-    let contentBlock = Content.contentBlockFn(self.state.theme);
+    let contentBlock = Content.contentBlockFn(theme);
     <div>
-      <div style=rootStyle(self.state.theme)>
-        <div style=appStyle(self.state.theme)>
+      <div style=rootStyle(theme)>
+        <div style=appStyle(theme)>
           /*
             <select
               onChange=(
@@ -297,13 +292,13 @@ let make = (~theme, _children) => {
               )
             </select>
           */
-          <div style=byWhaleBox(self.state.theme)>
+          <div style=byWhaleBox(theme)>
             <h1 className="h1" style=byWhaleTitleStyle>
               (text("bywhale."))
             </h1>
           </div>
           <div style=gridStyle>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.about.title)>
+            <SectionDashed orientation=Orientation.Left theme=theme title=(contentBlock.about.title)>
               <p style=contentStyle>
                 (
                   contentBlock.about.content
@@ -312,7 +307,7 @@ let make = (~theme, _children) => {
                 )
               </p>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Right theme=self.state.theme title=(contentBlock.team.title)>
+            <SectionDashed orientation=Orientation.Right theme=theme title=(contentBlock.team.title)>
               <Row>
                 <Col md=12>
                   <img src=lamaAndGregGif style=fullWidthImageStyle />
@@ -347,7 +342,7 @@ let make = (~theme, _children) => {
                 </div>
               </Row>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme title=(contentBlock.work.title)>
+            <SectionDashed orientation=Orientation.Left theme=theme title=(contentBlock.work.title)>
               <Row>
                 <Col md=5>
                   <div style=centeredContent>
@@ -407,7 +402,7 @@ let make = (~theme, _children) => {
                 </Col>
               </Row>
             </SectionDashed>
-            <SectionDashed title=(contentBlock.services.title) theme=self.state.theme>
+            <SectionDashed title=(contentBlock.services.title) theme=theme>
               <Row>
                 <Col md=3>
                   (
@@ -443,7 +438,7 @@ let make = (~theme, _children) => {
                 </Col>
               </Row>
             </SectionDashed>
-            <SectionDashed orientation=Orientation.Left theme=self.state.theme>
+            <SectionDashed orientation=Orientation.Left theme=theme>
               <Row style=lastSectionStyle>
                 <Col md=6>
                   <h2 style=titleStyle className="h2">
