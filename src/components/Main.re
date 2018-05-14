@@ -315,14 +315,13 @@ let clickCodeCreateCarouselItems : list(BlueWhaleCarousel.caroselItem) = [
 
 let component = ReasonReact.statelessComponent("Main");
 
-let make = (~theme, _children) => {
+let make = (~theme, ~changeTheme, _children) => {
   ...component,
   render: self => {
     let contentBlock = Content.contentBlockFn(theme);
     <div>
       <div style=rootStyle(theme)>
         <div style=appStyle(theme)>
-          /*
             <select
               onChange=(
                 (event) =>
@@ -331,18 +330,18 @@ let make = (~theme, _children) => {
                   |> ReactDOMRe.domElementToObj
                   |> (obj) => obj##value
                   |> Theme.stringToTheme
-                  |> (theme) => ChangeTheme(theme)
-                  |> self.send
+                  |> (theme) => changeTheme(theme)
               )
             >
               (
-                Theme.allThemes
+                /*Theme.allThemes*/
+                [Theme.AtariBlue, Theme.AtariBlack]
                 |> Belt.List.map(_, (theme) => <option value=Theme.themeToString(theme)>(text(Theme.themeToString(theme)))</option>)
                 |> Belt.List.toArray
                 |> ReasonReact.arrayToElement
               )
             </select>
-          */
+          
           <div style=byWhaleBox(theme)>
             <h1 className="h1" style=byWhaleTitleStyle>
               (text("bywhale."))
