@@ -5,6 +5,7 @@ let text = ReasonReact.stringToElement;
 [@bs.module] external ccc2 : string = "../../../../public/ClickCodeCreate2.png";
 [@bs.module] external ccc3 : string = "../../../../public/ClickCodeCreate3.png";
 [@bs.module] external lamaAndGregGif : string = "../../../../public/LamaAndGreg.gif";
+[@bs.module] external lamaAndGregBlackGif : string = "../../../../public/LamaAndGregBlack.gif";
 [@bs.module] external illumeImage : string = "../../../../public/illumeImage.png";
 
 type action =
@@ -360,7 +361,12 @@ let make = (~theme, _children) => {
             <SectionDashed orientation=Orientation.Right theme=theme title=(contentBlock.team.title)>
               <Row>
                 <Col md=12>
-                  <img src=lamaAndGregGif style=fullWidthImageStyle />
+                  (
+                    switch(theme){
+                    | Theme.AtariBlack => <img src=lamaAndGregBlackGif style=fullWidthImageStyle/>
+                    | (Theme.AtariBlue | Theme.Minimal) => <img src=lamaAndGregGif style=fullWidthImageStyle/>
+                    }
+                  )
                 </Col>
               </Row>
               <Row>
